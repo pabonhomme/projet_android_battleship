@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
 
     <Button
-        android:id="@+id/bienvenue"
-        android:layout_width="match_parent"
+        android:id="@+id/menu_jouer"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/retour">
+        android:text="@string/jouer"
+        app:backgroundTint="#0048FF" />
 
-    </Button>
+    <Button
+        android:id="@+id/menu_parametres"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:backgroundTint="#0048FF"
+        android:layout_marginTop="35dp"
+        android:text="@string/parametres_menu"/>
+
+    <Button
+        android:id="@+id/menu_retour"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:backgroundTint="#0048FF"
+        android:layout_marginTop="35dp"
+        android:text="@string/retour"/>
 
 </LinearLayout>

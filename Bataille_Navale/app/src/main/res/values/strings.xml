@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Bataille Navale</string>
+    <string name="commencer">Commencer</string>
     <string name="jouer">Jouer</string>
-    <string name="retour">retour</string>
+    <string name="retour">Retour</string>
+    <string name="accueil_msg">Bienvenue sur la meilleure application de bataille navale !</string>
+    <string name="parametres_menu">Paramètres</string>
 </resources>

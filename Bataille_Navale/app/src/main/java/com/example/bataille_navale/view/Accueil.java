@@ -17,7 +17,7 @@ public class Accueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ecran_accueil);
 
-        Button button = findViewById(R.id.accueil);
+        Button button = findViewById(R.id.accueil_commencer);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(Accueil.this, Menu.class);

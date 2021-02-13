@@ -16,7 +16,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        Button button = findViewById(R.id.bienvenue);
+        Button button = findViewById(R.id.menu_retour);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Accueil.class);
