@@ -9,11 +9,13 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.model.Manager;
 
-public class Menu extends AppCompatActivity {
+public class Menu extends FragmentActivity {
 
     private Manager manager = Manager.getInstance();
 
