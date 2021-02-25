@@ -33,11 +33,11 @@ public class Plateau {
     }
 
     /**
-     * on place les navires, PLACEMENT[] donne la taille de chaque Bateau au constructeur
+     * on crée les navires en leur donnant une taille, PLACEMENT[] donne la taille de chaque Bateau au constructeur
      */
     public void creerNavires() {
         for (int i = 0; i < PLACEMENT.length; i++)
-            navires[i] = new Bateau(PLACEMENT[i], this);
+            navires[i] = new Bateau(PLACEMENT[i]);
     }
 
     /**
