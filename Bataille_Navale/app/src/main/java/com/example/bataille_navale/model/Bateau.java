@@ -1,18 +1,18 @@
 package com.example.bataille_navale.model;
 
+import androidx.core.util.Pair;
+
 public class Bateau {
-    private int ligneDepart;
-    private int colonneDepart;
-    private Boolean direction; // false : horizontal; true : vertical
+
+    private Pair<Integer, Integer> positions;
+    private Orientation direction; // false : horizontal; true : vertical
     private int taille;
-//    private Plateau plateau;
 
     /**
      * constructeur de Bateau
      */
     public Bateau(int taille){
         setTaille(taille);
-//        this.plateau = plateau;
     }
 
     public int getTaille() {
@@ -23,19 +23,19 @@ public class Bateau {
         this.taille = taille;
     }
 
-    public int getLigneDepart() {
-        return ligneDepart;
+    public Orientation getDirection() {
+        return direction;
     }
 
-    public void setLigneDepart(int ligneDepart) {
-        this.ligneDepart = ligneDepart;
+    public void setDirection(Orientation direction) {
+        this.direction = direction;
     }
 
-    public int getColonneDepart() {
-        return colonneDepart;
+    public Pair<Integer, Integer> getPositions() {
+        return positions;
     }
 
-    public void setColonneDepart(int colonneDepart) {
-        this.colonneDepart = colonneDepart;
+    public void setPositions(Pair<Integer, Integer> positions) {
+        this.positions = positions;
     }
 }

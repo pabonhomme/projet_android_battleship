@@ -51,8 +51,7 @@ public class Cellule {
      * @return boolean
      */
     public boolean estCoulee(){
-//        return navire.estCoulee();
-        return false;
+        return faitPartieBateau() && estVisitee();
     }
 
     @NonNull

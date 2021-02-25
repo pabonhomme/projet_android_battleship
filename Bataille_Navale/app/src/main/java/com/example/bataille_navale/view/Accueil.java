@@ -21,7 +21,7 @@ public class Accueil extends AppCompatActivity {
         Button button = findViewById(R.id.accueil_commencer);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(Accueil.this, Menu.class);
+                Intent intent = new Intent(Accueil.this, Placement_Bateau.class);
                 startActivity(intent);
                 finish();
             }

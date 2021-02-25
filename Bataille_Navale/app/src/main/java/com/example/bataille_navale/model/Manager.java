@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Manager {
 
     private static Manager instanceUnique;
-    private Plateau plateau = new Plateau();
+    private Partie partie;
 
     /**
      * constructeur de manager
@@ -25,13 +25,13 @@ public class Manager {
     }
 
     public void lancerPartie() {
-        plateau = new Plateau();
-        plateau.positionneBateau(1, 2, false, 2, plateau.navires[1]);
-        test();
+        partie = new Partie();
+//        boolean test = plateau.positionneBateau(1, 2, Orientation.HORIZONTAL, 2, plateau.navires[1]);
+//        test();
     }
 
     public void test() {
-        System.out.print(plateau);
+//        System.out.print(plateau);
 //        Scanner k = new Scanner(System.in); // je n'ai pas réussi à faire de test en mode console, j'aurai bien aimé
 //        System.out.println(plateau);
 //        while(!plateau.etatsBateaux()){
@@ -56,4 +56,11 @@ public class Manager {
 
     }
 
+    public Partie getPartie() {
+        return partie;
+    }
+
+    public void setPartie(Partie partie) {
+        this.partie = partie;
+    }
 }

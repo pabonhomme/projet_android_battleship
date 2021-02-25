@@ -1,17 +1,22 @@
 package com.example.bataille_navale.model;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
+
+import static com.example.bataille_navale.model.Orientation.HORIZONTAL;
 
 public class Plateau {
 
     /*--- définition des attributs du plateau ---*/
     public static final int TAILLE_PLATEAU = 10;
-    public static final boolean VERTICAL = false;
-    public static final boolean HORIZONTAL = true;
     public static final int [] PLACEMENT = {2,2,1,1}; // temporairement on a 4 bateaux
 //    public static final int [] PLACEMENT = {5,4,3,2,2,1,1};
-    Bateau [] navires = new Bateau[PLACEMENT.length]; // on crée un tableau de PLACEMENT.length bâteaux
-    Cellule [] [] grille = new Cellule[TAILLE_PLATEAU][TAILLE_PLATEAU]; // on crée une grille de 100 cases
+    private final Bateau [] navires = new Bateau[PLACEMENT.length]; // on crée un tableau de PLACEMENT.length bâteaux
+    private Cellule[][] grille = new Cellule[TAILLE_PLATEAU][TAILLE_PLATEAU]; // on crée une grille de 100 cases
+
+    public Cellule[][] getGrille() {
+        return grille;
+    }
 
     /**
      * constructeur de Plateau
@@ -60,30 +65,23 @@ public class Plateau {
      * @param direction direction du bateau VERTICAL | HORIZONTAL
      * @return boolean
      */
-    public boolean estLibre(int ligneVoulue, int colonneVoulue, boolean direction, int taille) {
+    public boolean estLibre(int ligneVoulue, int colonneVoulue, Orientation direction, int taille) {
 
         /*--- premier cas direction horizontal ---*/
         if (direction == HORIZONTAL){
             for (int colonneBis = colonneVoulue; colonneBis <= colonneVoulue + taille - 1; colonneBis++) {
-                if (getCellule(ligneVoulue, colonneBis) != null) {
-                    if (grille[ligneVoulue][colonneBis].faitPartieBateau()) {
-                        return false;
-                    }
-                } else {
+                if(faitPartieDeBateau(ligneVoulue, colonneBis)){
                     return false;
                 }
             }
             return true;
             /*--- deuxième cas VERTICAL ---*/
-        } else {for (int ligneBis = ligneVoulue; ligneBis <= ligneVoulue + taille - 1; ligneBis++){
-            if (getCellule(ligneBis,colonneVoulue) != null) {
-                if (grille[ligneBis][colonneVoulue].faitPartieBateau()) {
+        } else {
+            for (int ligneBis = ligneVoulue; ligneBis <= ligneVoulue + taille - 1; ligneBis++){
+                if(faitPartieDeBateau(ligneBis, colonneVoulue)){
                     return false;
                 }
-            } else {
-                return false;
             }
-        }
             return true;
         }
     }
@@ -92,19 +90,30 @@ public class Plateau {
      * on positionne le bateau à une position donnée
      * @param ligneDepart int ligne sur laquelle le bateau sera positionné
      * @param colonneDepart int colonne sur laquelle le bateau sera positionné
-     * @param direction boolean direction du bateau
+     * @param direction Orientation direction du bateau
      * @param taille int taille du bateau
      * @param bateau Bateau bateau à mettre
+     * @return boolean
      */
-    public void positionneBateau(int ligneDepart, int colonneDepart, boolean direction, int taille, Bateau bateau) {
+    public boolean positionneBateau(int ligneDepart, int colonneDepart, Orientation direction, int taille, Bateau bateau) {
 
-        if (direction == Plateau.HORIZONTAL)
-            for (int newColonne = colonneDepart; newColonne <= colonneDepart + taille - 1; newColonne++)
-                grille[ligneDepart][newColonne].mettreBateau(bateau);
-        else
-            for (int newLigne = ligneDepart; newLigne <= ligneDepart + taille - 1; newLigne++)
-                grille[newLigne][colonneDepart].mettreBateau(bateau);
-
+        if(estLibre(ligneDepart, colonneDepart, direction, taille)){ // on vérifie que la place pour le bateau est libre
+            bateau.setPositions(new Pair<>(ligneDepart, colonneDepart));
+            bateau.setDirection(direction);
+            if (direction == HORIZONTAL){
+                for (int newColonne = colonneDepart; newColonne <= colonneDepart + taille - 1; newColonne++){
+                    grille[ligneDepart][newColonne].mettreBateau(bateau);
+                }
+                return true; // si on a bien positionné le bateau
+            }
+            else{
+                for (int newLigne = ligneDepart; newLigne <= ligneDepart + taille - 1; newLigne++){
+                    grille[newLigne][colonneDepart].mettreBateau(bateau);
+                }
+                return true; // si on a bien positionné le bateau
+            }
+        }
+        return false; // pas libre donc pas possible de placer
     }
 
     /**
@@ -169,8 +178,7 @@ public class Plateau {
     public boolean etatsBateaux(){
         for(int ligneBis = 0; ligneBis < Plateau.TAILLE_PLATEAU; ligneBis++)
             for(int colonneBis = 0; colonneBis < Plateau.TAILLE_PLATEAU; colonneBis++)
-                if (grille[ligneBis][colonneBis].faitPartieBateau() &&
-                        !grille[ligneBis][colonneBis].estVisitee())
+                if (estCoulee(ligneBis, colonneBis))
                     return false;
         return true;
     }
