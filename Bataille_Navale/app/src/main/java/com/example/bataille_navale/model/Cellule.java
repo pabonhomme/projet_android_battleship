@@ -56,7 +56,7 @@ public class Cellule {
      * Indique si la cellule contient un bateau touché
      * @return boolean
      */
-    public boolean estCoulee(){
+    public boolean estTouchee(){
         return faitPartieBateau() && estVisitee();
     }
 

@@ -40,8 +40,8 @@ public class Placement_Bateau extends AppCompatActivity {
                 Cellule cell = gmanager.getJ1().getPlateau().getGrille().get(position);
                 Drawable background;
                 cell.visite();
-                if(cell.estCoulee()){
-                     background = getResources().getDrawable( R.drawable.coule); // si le bateau est touchée
+                if(cell.estTouchee()) {
+                    background = getResources().getDrawable(R.drawable.coule); // si le bateau est touchée
                 }
                 else {
                      background = getResources().getDrawable( R.drawable.plouf); // si y'a pas de bateau

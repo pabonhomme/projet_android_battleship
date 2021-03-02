@@ -47,7 +47,7 @@ public class Plateau_Jeu extends AppCompatActivity {
 
                 if(!cell.estVisitee()){
                     cell.visite();
-                    if(cell.estCoulee()){
+                    if(cell.estTouchee()){
                         background = getResources().getDrawable( R.drawable.touche); // si le bateau est touchée
                     }
                     else {

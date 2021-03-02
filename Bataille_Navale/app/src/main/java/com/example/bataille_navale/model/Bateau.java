@@ -7,7 +7,8 @@ public class Bateau {
     private Pair<Integer, Integer> positions;
     private Orientation direction; // false : horizontal; true : vertical
     private int taille;
-    private int cellCoulees = 0;
+    private int cellTouchees = 0;
+    private boolean coule = false;
 
     /**
      * constructeur de Bateau
@@ -26,17 +27,24 @@ public class Bateau {
      * Permet de savoir si le bateau est coulée
      * @return boolean si il est coulé
      */
-    public boolean estCoulee(){
-        return cellCoulees == taille;
+    public boolean estCoule(){
+        return cellTouchees == taille;
     }
 
     /**
      * Ajout une partie du bateau touchée au compteur
      */
     public void addCellTouchee(){
-        if(cellCoulees <taille){
-            cellCoulees++;
+        if(cellTouchees <taille){
+            cellTouchees++;
         }
+        if(estCoule()){
+            coule = true;
+        }
+    }
+
+    public boolean isCoule() {
+        return coule;
     }
 
     public int getTaille() {

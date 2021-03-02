@@ -60,7 +60,7 @@ public class GameManager {
 //            colonne = 6;
 //            plateau.visite(ligne, colonne);
 //            if(plateau.faitPartieDeBateau(ligne, colonne)){
-//                if(plateau.estCoulee(ligne, colonne)){
+//                if(plateau.estTouchee(ligne, colonne)){
 //                    System.out.println("Bâteau détruit !");
 //                } else{
 //                    System.out.println("Bâteau endommagé !");

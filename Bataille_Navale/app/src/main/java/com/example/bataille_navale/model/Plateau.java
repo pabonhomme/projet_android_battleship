@@ -155,10 +155,10 @@ public class Plateau {
      * @param colonne int colonne à vérifier
      * @return boolean, true si coulée false sinon
      */
-    public boolean estCoulee(int ligne, int colonne){
+    public boolean estTouchee(int ligne, int colonne){
         Cellule cel = getCellule(ligne, colonne);
         if(cel != null){
-            return cel.estCoulee();
+            return cel.estTouchee();
         }
         return false;
     }
@@ -183,7 +183,7 @@ public class Plateau {
     public boolean etatsBateaux(){
         for(int ligneBis = 0; ligneBis < Plateau.TAILLE_PLATEAU; ligneBis++)
             for(int colonneBis = 0; colonneBis < Plateau.TAILLE_PLATEAU; colonneBis++)
-                if (estCoulee(ligneBis, colonneBis))
+                if (estTouchee(ligneBis, colonneBis))
                     return false;
         return true;
     }
