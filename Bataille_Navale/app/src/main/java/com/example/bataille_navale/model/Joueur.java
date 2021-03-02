@@ -9,12 +9,10 @@ import java.io.Serializable;
 public class Joueur implements Comparable<Joueur>, Serializable {
 
     private String pseudo;
-    public String getPseudo(){ return pseudo; }
-    public void setPseudo(String pseudo){this.pseudo = pseudo; }
-
     private int score;
-    public int getScore() { return score; }
-    public void setScore(int score) { this.score = score; }
+    private Plateau plateau;
+    private Plateau plateauAdverse;
+
 
     /**
      * Creer un Joueur
@@ -22,6 +20,7 @@ public class Joueur implements Comparable<Joueur>, Serializable {
     public Joueur(){
         setPseudo("");
         setScore(0);
+        setPlateau(new Plateau());
     }
 
     /**
@@ -97,5 +96,37 @@ public class Joueur implements Comparable<Joueur>, Serializable {
             return 0;
         }
         return -1;
+    }
+
+    public String getPseudo(){
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo){
+        this.pseudo = pseudo;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    public void setPlateau(Plateau plateau) {
+        this.plateau = plateau;
+    }
+
+    public Plateau getPlateauAdverse() {
+        return plateauAdverse;
+    }
+
+    public void setPlateauAdverse(Plateau plateauAdverse) {
+        this.plateauAdverse = plateauAdverse;
     }
 }

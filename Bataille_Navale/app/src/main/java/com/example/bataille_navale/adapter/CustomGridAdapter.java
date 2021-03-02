@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.model.Cellule;
 
+// ON NE SE SERT PAS DE CELUI LA, ON UTILISE CustomGridAdapterDeux
 public class CustomGridAdapter extends RecyclerView.Adapter<MonViewHolder> {
 
     private final Cellule[][] grille;

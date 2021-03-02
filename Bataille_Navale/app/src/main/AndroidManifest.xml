@@ -18,7 +18,10 @@
         <activity android:name=".view.Menu" android:theme="@style/Theme.Bataille_Navale.NoActionBar">
 
         </activity>
-        <activity android:name=".view.Placement_Bateau" android:theme="@style/Theme.Bataille_Navale.NoActionBar">
+        <activity android:name=".view.Placement_Bateau" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".view.Plateau_Jeu" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
 
         </activity>
     </application>

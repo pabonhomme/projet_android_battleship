@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.bataille_navale.R;
-import com.example.bataille_navale.model.Manager;
+import com.example.bataille_navale.model.GameManager;
 
 public class Menu extends FragmentActivity {
 
-    private Manager manager = Manager.getInstance();
+    private GameManager gmanager = GameManager.getInstance();
 
     AlphaAnimation animation=null;
 

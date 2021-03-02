@@ -1,18 +1,21 @@
 package com.example.bataille_navale.model;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
 
 public class Cellule {
 
+    private Pair<Integer, Integer> positions;
     private Bateau navire;
     private boolean estVisitee;
 
     /**
      * constructeur de Cellule
      */
-    public Cellule(){
+    public Cellule(Pair<Integer, Integer> positions){
         navire = null;
         estVisitee = false;
+        setPositions(positions);
     }
 
     /**
@@ -28,6 +31,9 @@ public class Cellule {
      */
     public void visite(){
         estVisitee = true;
+        if(faitPartieBateau()){
+            navire.addCellTouchee();
+        }
     }
 
     /**
@@ -47,22 +53,27 @@ public class Cellule {
     }
 
     /**
-     * Indique si le navire est coulé
+     * Indique si la cellule contient un bateau touché
      * @return boolean
      */
     public boolean estCoulee(){
         return faitPartieBateau() && estVisitee();
     }
 
+    public Pair<Integer, Integer> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Pair<Integer, Integer> positions) {
+        this.positions = positions;
+    }
+
     @NonNull
     @Override
     public String toString() {
         if(!estVisitee()){
-            return "O";
+            return "";
         }
-        else if(faitPartieBateau()){
-            return "X";
-        }
-        return "°";
+        else return "X";
     }
 }

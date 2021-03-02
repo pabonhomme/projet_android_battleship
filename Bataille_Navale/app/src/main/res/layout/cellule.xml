@@ -5,9 +5,12 @@
     
     <TextView
         android:id="@+id/cellule"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:gravity="center"
-        android:background="@drawable/cellule_normale"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/eau_bg"
+        />
 
 </LinearLayout>
