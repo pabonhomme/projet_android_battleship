@@ -8,6 +8,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ public class Plateau_Jeu extends AppCompatActivity {
 
         gmanager.lancerPartie();
 
-        final GridView gridView = findViewById(R.id.gridView); // on récupère la grid
+        final GridView gridView = findViewById(R.id.gridView_jeu); // on récupère la grid
         final CustomGridAdapterDeux gridAdapter = new CustomGridAdapterDeux(this, gmanager.getJ1().getPlateau().getGrille()); // on set l'adapter
         gridView.setAdapter(gridAdapter);
 
@@ -70,7 +71,7 @@ public class Plateau_Jeu extends AppCompatActivity {
     /**
      * Change le fond de la cellule avec une animation
      * @param leTextView Textview
-     * @param background
+     * @param background Drawable background de la celulle
      */
     private void touchAnimation(TextView leTextView, Drawable background){
         animation = new AlphaAnimation(0, 1);

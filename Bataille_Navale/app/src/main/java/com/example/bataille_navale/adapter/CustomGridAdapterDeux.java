@@ -1,9 +1,11 @@
 package com.example.bataille_navale.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.BaseAdapter;
 
 import com.example.bataille_navale.R;
@@ -13,9 +15,10 @@ import java.util.ArrayList;
 
 public class CustomGridAdapterDeux extends BaseAdapter {
 
-    private final ArrayList<Cellule> listeCell;
+    private ArrayList<Cellule> listeCell;
     private LayoutInflater layoutInflater;
     private Context context;
+    AlphaAnimation animation=null;
 
     public CustomGridAdapterDeux(Context aContext, ArrayList<Cellule> listeCell ) {
         this.context = aContext;
@@ -38,6 +41,11 @@ public class CustomGridAdapterDeux extends BaseAdapter {
         return position;
     }
 
+    public void refreshData(ArrayList<Cellule> data){
+        this.listeCell = data;
+        notifyDataSetChanged();
+    }
+
     public View getView(int position, View convertView, ViewGroup parent) {
         MonViewHolder holder;
         if (convertView == null) {
@@ -48,7 +56,14 @@ public class CustomGridAdapterDeux extends BaseAdapter {
             holder = (MonViewHolder) convertView.getTag();
         }
 
-//        holder.getLeTextView().setText(listeCell.get(position).toString()); // on met une croix dans les cases mais plus besoin background suffit
+        Cellule cell = listeCell.get(position);
+        Drawable background;
+        if(cell.estTouchee()){
+            if(cell.estCoulee()){
+                background = parent.getResources().getDrawable( R.drawable.coule);
+                holder.getLeTextView().setBackground(background);
+            }
+        }
 
         return convertView;
     }

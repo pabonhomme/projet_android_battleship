@@ -60,6 +60,10 @@ public class Cellule {
         return faitPartieBateau() && estVisitee();
     }
 
+    public boolean estCoulee(){
+        return navire.estCoule();
+    }
+
     public Pair<Integer, Integer> getPositions() {
         return positions;
     }

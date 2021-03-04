@@ -35,7 +35,7 @@ public class GameManager {
        j2 = new Joueur();
        setPlateauxAdverses(j1,j2);
        boolean test = j1.getPlateau().positionneBateau(new Bateau(1, 2, Orientation.HORIZONTAL, 2));
-
+       test = j1.getPlateau().positionneBateau(new Bateau(5, 3, Orientation.VERTICAL, 4));
     }
 
     /**

@@ -26,7 +26,7 @@ public class Placement_Bateau extends AppCompatActivity {
 
         gmanager.lancerPartie();
 
-        final GridView gridView = findViewById(R.id.gridView); // on récupère la grid
+        final GridView gridView = findViewById(R.id.gridView_placement); // on récupère la grid
         final CustomGridAdapterDeux gridAdapter = new CustomGridAdapterDeux(this, gmanager.getJ1().getPlateau().getGrille()); // on set l'adapter
         gridView.setAdapter(gridAdapter);
 
@@ -34,19 +34,7 @@ public class Placement_Bateau extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
-                // quand on clique sur une case on change la couleur de la case
-                TextView leTextView = view.findViewById(R.id.cellule); // on récupère la textView
 
-                Cellule cell = gmanager.getJ1().getPlateau().getGrille().get(position);
-                Drawable background;
-                cell.visite();
-                if(cell.estTouchee()) {
-                    background = getResources().getDrawable(R.drawable.coule); // si le bateau est touchée
-                }
-                else {
-                     background = getResources().getDrawable( R.drawable.plouf); // si y'a pas de bateau
-                }
-                leTextView.setBackground(background);
 
                 // This tells the GridView to redraw itself
                 // in turn calling your CustomGridAdapterDeux's getView method again for each cell

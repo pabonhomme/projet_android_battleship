@@ -8,7 +8,6 @@ public class Bateau {
     private Orientation direction; // false : horizontal; true : vertical
     private int taille;
     private int cellTouchees = 0;
-    private boolean coule = false;
 
     /**
      * constructeur de Bateau
@@ -38,13 +37,6 @@ public class Bateau {
         if(cellTouchees <taille){
             cellTouchees++;
         }
-        if(estCoule()){
-            coule = true;
-        }
-    }
-
-    public boolean isCoule() {
-        return coule;
     }
 
     public int getTaille() {
