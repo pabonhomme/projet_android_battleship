@@ -33,9 +33,12 @@ public class GameManager {
     public void lancerPartie() {
        j1 = new Joueur();
        j2 = new Joueur();
+       j1.setPseudo("Paul");
+       j2.setPseudo("Théo");
        setPlateauxAdverses(j1,j2);
-       boolean test = j1.getPlateau().positionneBateau(new Bateau(1, 2, Orientation.HORIZONTAL, 2));
-       test = j1.getPlateau().positionneBateau(new Bateau(5, 3, Orientation.VERTICAL, 4));
+       setJoueurEnCours(j1);
+//       boolean test = j1.getPlateau().positionneBateau(new Bateau(1, 2, Orientation.HORIZONTAL, 2));
+//       test = j1.getPlateau().positionneBateau(new Bateau(5, 3, Orientation.VERTICAL, 4));
     }
 
     /**

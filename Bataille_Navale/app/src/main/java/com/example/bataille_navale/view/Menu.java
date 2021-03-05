@@ -29,24 +29,10 @@ public class Menu extends FragmentActivity {
         Button button_menu_jouer = findViewById(R.id.menu_jouer);
         button_menu_jouer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Button button_menu_parametres = findViewById(R.id.menu_parametres);
-
-                if(button_menu_parametres.getVisibility() == View.VISIBLE){ // test des animations sur le bouton paramètre à partir du bouton jouer
-                    animation = new AlphaAnimation(1, 0);
-                    animation.setDuration(500);
-                    animation.setInterpolator(new AccelerateInterpolator());
-                    button_menu_parametres.startAnimation(animation);
-                    button_menu_parametres.setVisibility(View.INVISIBLE);
-                    button_menu_parametres.setClickable(false);
-                }
-                else{
-                    animation = new AlphaAnimation(0, 1);
-                    animation.setDuration(500);
-                    animation.setInterpolator(new AccelerateInterpolator());
-                    button_menu_parametres.startAnimation(animation);
-                    button_menu_parametres.setVisibility(View.VISIBLE);
-                    button_menu_parametres.setClickable(true);
-                }
+                gmanager.lancerPartie();
+                Intent intent = new Intent(Menu.this, Placement_Bateau.class);
+                startActivity(intent);
+                finish();
             }
         });
 

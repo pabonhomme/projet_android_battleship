@@ -15,4 +15,11 @@
     <string name="_7">7</string>
     <string name="_8">8</string>
     <string name="_9">9</string>
+
+    <string name="nomJoueur_placement" formatted="false">%s : Veuillez placer vos bateaux</string>
+    <string name="bat_restant_placement" formatted="false">Il reste %d bateaux à placer</string>
+    <string name="taille_bat_placement" formatted="false">Placez le bateau de taille %d</string>
+
+    <string name="nomJoueur_jeu" formatted="false">C\'est au tour de %s de jouer</string>
+    <string name="bat_restant_jeu" formatted="false">Il reste %d bateaux à détruire !</string>
 </resources>

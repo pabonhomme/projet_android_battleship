@@ -13,14 +13,14 @@ import com.example.bataille_navale.model.Cellule;
 
 import java.util.ArrayList;
 
-public class CustomGridAdapterDeux extends BaseAdapter {
+public class GridAdapterJeu extends BaseAdapter {
 
     private ArrayList<Cellule> listeCell;
     private LayoutInflater layoutInflater;
     private Context context;
     AlphaAnimation animation=null;
 
-    public CustomGridAdapterDeux(Context aContext, ArrayList<Cellule> listeCell ) {
+    public GridAdapterJeu(Context aContext, ArrayList<Cellule> listeCell ) {
         this.context = aContext;
         this.listeCell = listeCell;
         layoutInflater = LayoutInflater.from(aContext);
@@ -58,11 +58,20 @@ public class CustomGridAdapterDeux extends BaseAdapter {
 
         Cellule cell = listeCell.get(position);
         Drawable background;
-        if(cell.estTouchee()){
-            if(cell.estCoulee()){
-                background = parent.getResources().getDrawable( R.drawable.coule);
-                holder.getLeTextView().setBackground(background);
+        if(cell.estVisitee()){
+
+            if(cell.estTouchee()){
+                if(cell.estCoulee()){
+                    background = parent.getResources().getDrawable( R.drawable.coule);
+                }
+                else{
+                    background = parent.getResources().getDrawable( R.drawable.touche); // si le bateau est touchée
+                }
             }
+            else {
+                background = parent.getResources().getDrawable( R.drawable.plouf); // si y'a pas de bateau
+            }
+            holder.getLeTextView().setBackground(background);
         }
 
         return convertView;

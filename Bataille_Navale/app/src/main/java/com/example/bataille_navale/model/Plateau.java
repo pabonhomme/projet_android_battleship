@@ -11,19 +11,12 @@ public class Plateau {
 
     /*--- définition des attributs du plateau ---*/
     public static final int TAILLE_PLATEAU = 10;
-    public static final int [] PLACEMENT = {2,2,1,1}; // temporairement on a 4 bateaux
-//    public static final int [] PLACEMENT = {5,4,3,2,2,1,1};
+    public static final int [] TAILLE_NAVIRES = {5,4,3,2,2,1,1}; // temporairement on a 4 bateaux
+    //    public static final int [] PLACEMENT = {5,4,3,2,2,1,1};
+    public static final int NB_BATEAUX = TAILLE_NAVIRES.length;
 //    private final Bateau [] navires = new Bateau[PLACEMENT.length]; // on crée un tableau de PLACEMENT.length bâteaux
-    private final ArrayList<Bateau> listeBateaux = new ArrayList<>();
+    private ArrayList<Bateau> navires = new ArrayList<>();
     private ArrayList<Cellule> grille = new ArrayList<>(); // on crée une grille de 100 cases
-
-//    public Bateau[] getNavires() {
-//        return navires;
-//    }
-
-    public ArrayList<Cellule> getGrille() {
-        return grille;
-    }
 
     /**
      * constructeur de Plateau
@@ -81,7 +74,7 @@ public class Plateau {
         /*--- premier cas direction horizontal ---*/
         if (direction == HORIZONTAL){
             for (int colonneBis = colonneVoulue; colonneBis <= colonneVoulue + taille - 1; colonneBis++) {
-                if(faitPartieDeBateau(ligneVoulue, colonneBis)){
+                if(faitPartieDeBateau(ligneVoulue, colonneBis) || colonneBis >= TAILLE_PLATEAU){
                     return false;
                 }
             }
@@ -89,7 +82,7 @@ public class Plateau {
             /*--- deuxième cas VERTICAL ---*/
         } else {
             for (int ligneBis = ligneVoulue; ligneBis <= ligneVoulue + taille - 1; ligneBis++){
-                if(faitPartieDeBateau(ligneBis, colonneVoulue)){
+                if(faitPartieDeBateau(ligneBis, colonneVoulue) || ligneBis >= TAILLE_PLATEAU){
                     return false;
                 }
             }
@@ -108,12 +101,14 @@ public class Plateau {
             if (bateau.getDirection() == HORIZONTAL){
                 for (int newColonne = bateau.getPositions().second; newColonne <= bateau.getPositions().second + bateau.getTaille() - 1; newColonne++){
                     getCellule(bateau.getPositions().first, newColonne).mettreBateau(bateau);
+                    navires.add(bateau);
                 }
                 return true; // si on a bien positionné le bateau
             }
             else{
                 for (int newLigne = bateau.getPositions().first; newLigne <= bateau.getPositions().first + bateau.getTaille() - 1; newLigne++){
                     getCellule(newLigne, bateau.getPositions().second).mettreBateau(bateau);
+                    navires.add(bateau);
                 }
                 return true; // si on a bien positionné le bateau
             }
@@ -176,6 +171,16 @@ public class Plateau {
         }
     }
 
+    public int nombreBateauxCoules(){
+        int i = 0;
+        for (Bateau bat:navires) {
+            if(bat.estCoule()){
+                i++;
+            }
+        }
+        return i;
+    }
+
     /**
      * Vérifie l'état des bateaux sur le plateau de jeu
      * @return boolean, true si tous les bateaux ont été touchés false sinon
@@ -199,5 +204,13 @@ public class Plateau {
             retour += "";
         }
         return retour;
+    }
+
+    public ArrayList<Bateau> getNavires() {
+        return navires;
+    }
+
+    public ArrayList<Cellule> getGrille() {
+        return grille;
     }
 }
