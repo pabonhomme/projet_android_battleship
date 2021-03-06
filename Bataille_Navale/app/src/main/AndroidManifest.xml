@@ -24,6 +24,9 @@
         <activity android:name=".view.Plateau_Jeu" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".view.Joueur_gagnant" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

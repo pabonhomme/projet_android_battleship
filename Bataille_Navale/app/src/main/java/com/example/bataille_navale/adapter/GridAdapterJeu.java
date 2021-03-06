@@ -43,7 +43,7 @@ public class GridAdapterJeu extends BaseAdapter {
 
     public void refreshData(ArrayList<Cellule> data){
         this.listeCell = data;
-        notifyDataSetChanged();
+        this.notifyDataSetChanged();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {

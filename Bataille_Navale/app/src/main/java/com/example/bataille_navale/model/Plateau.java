@@ -12,7 +12,6 @@ public class Plateau {
     /*--- définition des attributs du plateau ---*/
     public static final int TAILLE_PLATEAU = 10;
     public static final int [] TAILLE_NAVIRES = {5,4,3,2,2,1,1}; // temporairement on a 4 bateaux
-    //    public static final int [] PLACEMENT = {5,4,3,2,2,1,1};
     public static final int NB_BATEAUX = TAILLE_NAVIRES.length;
 //    private final Bateau [] navires = new Bateau[PLACEMENT.length]; // on crée un tableau de PLACEMENT.length bâteaux
     private ArrayList<Bateau> navires = new ArrayList<>();
@@ -101,15 +100,15 @@ public class Plateau {
             if (bateau.getDirection() == HORIZONTAL){
                 for (int newColonne = bateau.getPositions().second; newColonne <= bateau.getPositions().second + bateau.getTaille() - 1; newColonne++){
                     getCellule(bateau.getPositions().first, newColonne).mettreBateau(bateau);
-                    navires.add(bateau);
                 }
+                navires.add(bateau);
                 return true; // si on a bien positionné le bateau
             }
             else{
                 for (int newLigne = bateau.getPositions().first; newLigne <= bateau.getPositions().first + bateau.getTaille() - 1; newLigne++){
                     getCellule(newLigne, bateau.getPositions().second).mettreBateau(bateau);
-                    navires.add(bateau);
                 }
+                navires.add(bateau);
                 return true; // si on a bien positionné le bateau
             }
         }
@@ -185,12 +184,13 @@ public class Plateau {
      * Vérifie l'état des bateaux sur le plateau de jeu
      * @return boolean, true si tous les bateaux ont été touchés false sinon
      */
-    public boolean etatsBateaux(){
-        for(int ligneBis = 0; ligneBis < Plateau.TAILLE_PLATEAU; ligneBis++)
-            for(int colonneBis = 0; colonneBis < Plateau.TAILLE_PLATEAU; colonneBis++)
-                if (estTouchee(ligneBis, colonneBis))
-                    return false;
-        return true;
+    public boolean isPlateauCoule(){
+        int i = 0;
+        for(Bateau bat:navires) {
+            if(bat.estCoule())
+                i++;
+        }
+        return i == NB_BATEAUX;
     }
 
     @NonNull

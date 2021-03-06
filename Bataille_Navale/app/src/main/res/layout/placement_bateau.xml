@@ -14,11 +14,11 @@
         android:textColor="#0048FF"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bat_restant_placement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/bat_restant_placement"
@@ -27,20 +27,35 @@
         android:gravity="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/coorTop_placement"
+        app:layout_constraintTop_toTopOf="@id/nomJoueur_placement"
+        app:layout_constraintBottom_toTopOf="@id/taille_bat_placement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.7"/>
+
+    <TextView
+        android:id="@+id/taille_bat_placement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/coorTop_placement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.9" />
 
     <LinearLayout
         android:id="@+id/coorTop_placement"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taille_bat_placement"
         app:layout_constraintBottom_toTopOf="@id/gridView_placement"
         app:layout_constraintEnd_toEndOf="@id/gridView_placement"
         app:layout_constraintStart_toStartOf="@id/gridView_placement"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
@@ -120,10 +135,10 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/gridView_placement"
-        app:layout_constraintEnd_toStartOf="@id/gridView_placement"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gridView_placement"
+        app:layout_constraintBottom_toBottomOf="@id/gridView_placement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gridView_placement"
         app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
@@ -209,12 +224,12 @@
         android:horizontalSpacing="1dp"
         android:numColumns="10"
         android:verticalSpacing="1dp"
-        app:layout_constraintBottom_toBottomOf="@id/orientation_placement"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/coorLeft_placement"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/coorTop_placement"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <View
@@ -223,36 +238,27 @@
         android:layout_height="0dp"
         android:background="@android:color/holo_red_dark"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/gridView_placement"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="@+id/gridView_placement"
-        app:layout_constraintStart_toEndOf="@+id/coorLeft_placement"
-        app:layout_constraintStart_toStartOf="@+id/gridView_placement"
         app:layout_constraintTop_toBottomOf="@id/gridView_placement"
         app:layout_constraintTop_toTopOf="@id/gridView_placement"
+        app:layout_constraintBottom_toBottomOf="@+id/gridView_placement"
+        app:layout_constraintStart_toEndOf="@+id/coorLeft_placement"
+        app:layout_constraintStart_toStartOf="@+id/gridView_placement"
+        app:layout_constraintEnd_toEndOf="@+id/gridView_placement"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <TextView
-        android:id="@+id/taille_bat_placement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/gridView_placement"
-        app:layout_constraintStart_toStartOf="@id/gridView_placement"
-        app:layout_constraintTop_toBottomOf="@id/gridView_placement" />
+
 
     <TextView
+        android:id="@+id/text_orientation_placement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choisissez l'orientation du bateau :"
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/orientation_placement"
         app:layout_constraintBottom_toBottomOf="@id/orientation_placement"
-        app:layout_constraintEnd_toStartOf="@id/orientation_placement"
-        app:layout_constraintTop_toTopOf="@id/orientation_placement" />
+        app:layout_constraintEnd_toStartOf="@id/orientation_placement" />
 
     <RadioGroup
         android:id="@+id/orientation_placement"
@@ -263,14 +269,15 @@
         android:layout_marginBottom="30dp"
         android:checkedButton="@id/horizontal"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/taille_bat_placement">
+        app:layout_constraintTop_toBottomOf="@id/gridView_placement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <RadioButton
             android:id="@+id/horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Horizontal"
+            android:text="@string/horizontal_placement"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -278,7 +285,7 @@
             android:id="@+id/vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vertical"
+            android:text="@string/vertical_placement"
             android:textSize="15sp"
             android:textStyle="bold" />
     </RadioGroup>
@@ -287,10 +294,10 @@
         android:id="@+id/suivant_placement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Suivant"
+        android:text="@string/suivant_bouton"
+        app:layout_constraintTop_toBottomOf="@id/orientation_placement"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orientation_placement" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

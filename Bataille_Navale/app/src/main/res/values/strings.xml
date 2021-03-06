@@ -22,4 +22,9 @@
 
     <string name="nomJoueur_jeu" formatted="false">C\'est au tour de %s de jouer</string>
     <string name="bat_restant_jeu" formatted="false">Il reste %d bateaux à détruire !</string>
+
+    <string name="pseudo_gagnant" formatted="false">Le gagnant est %s!</string>
+    <string name="vertical_placement">Vertical</string>
+    <string name="horizontal_placement">Horizontal</string>
+    <string name="suivant_bouton">Suivant</string>
 </resources>

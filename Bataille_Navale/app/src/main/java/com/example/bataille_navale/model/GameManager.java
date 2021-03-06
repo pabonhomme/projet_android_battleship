@@ -9,6 +9,8 @@ public class GameManager {
     private Joueur j1;
     private Joueur j2;
     private Joueur joueurEnCours;
+    private boolean aTouche;
+    private boolean ajoue;
 
     /**
      * constructeur de manager
@@ -37,8 +39,12 @@ public class GameManager {
        j2.setPseudo("Théo");
        setPlateauxAdverses(j1,j2);
        setJoueurEnCours(j1);
-//       boolean test = j1.getPlateau().positionneBateau(new Bateau(1, 2, Orientation.HORIZONTAL, 2));
-//       test = j1.getPlateau().positionneBateau(new Bateau(5, 3, Orientation.VERTICAL, 4));
+       setAjoue(false);
+       setaTouche(false);
+    }
+
+    public boolean isPartieFinie(){
+        return joueurEnCours.getPlateauAdverse().isPlateauCoule();
     }
 
     /**
@@ -49,6 +55,17 @@ public class GameManager {
     private void setPlateauxAdverses(Joueur j1, Joueur j2) {
         j1.setPlateauAdverse(j2.getPlateau());
         j2.setPlateauAdverse(j1.getPlateau());
+    }
+
+    public void changementJoueur(){
+        if(getJoueurEnCours() == getJ1()){
+            setJoueurEnCours(getJ2());
+        }
+        else {
+            setJoueurEnCours(getJ1());
+        }
+        setAjoue(false);
+        setaTouche(false);
     }
 
     public void test() {
@@ -107,5 +124,21 @@ public class GameManager {
 
     public void setPseudoGagnant(String pseudoGagnant) {
         this.pseudoGagnant = pseudoGagnant;
+    }
+
+    public boolean getaTouche() {
+        return aTouche;
+    }
+
+    public void setaTouche(boolean aTouche) {
+        this.aTouche = aTouche;
+    }
+
+    public boolean getajoue() {
+        return ajoue;
+    }
+
+    public void setAjoue(boolean ajoue) {
+        this.ajoue = ajoue;
     }
 }
