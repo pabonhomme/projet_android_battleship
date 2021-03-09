@@ -45,7 +45,7 @@ public class Placement_Bateau extends AppCompatActivity {
         orientationGroup =  findViewById(R.id.orientation_placement);
         suivant_placement = findViewById(R.id.suivant_placement);
 
-        nomJoueur_placement.setText(getResources().getString(R.string.nomJoueur_placement, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
+        nomJoueur_placement.setText(getResources().getString(R.string.pseudo_placement, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
         bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
         taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, gmanager.getJoueurEnCours().getPlateau().TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
 
@@ -67,7 +67,7 @@ public class Placement_Bateau extends AppCompatActivity {
                     if(gmanager.getJoueurEnCours().getPlateau().positionneBateau(new Bateau(cell.getPositions().first, cell.getPositions().second, orientation, gmanager.getJoueurEnCours().getPlateau().TAILLE_NAVIRES[bateauPlace]))){ // on teste si on peut positionner le bateau
                         bateauPlace++;
                         bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
-                        if(bateauPlace == 7){ // on vérifie si on ne dépasse pas l'index maximal du tableau
+                        if(bateauPlace == gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX){ // on vérifie si on ne dépasse pas l'index maximal du tableau
                             taille_bat_placement.setVisibility(View.INVISIBLE);
                         }
                         else{
@@ -86,7 +86,7 @@ public class Placement_Bateau extends AppCompatActivity {
 
         suivant_placement.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if(bateauPlace == 7){
+                if(bateauPlace == gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX){
                     if(gmanager.getJoueurEnCours() == gmanager.getJ1()){
                         gmanager.setJoueurEnCours(gmanager.getJ2());
                         Intent intent = new Intent(Placement_Bateau.this, Placement_Bateau.class);

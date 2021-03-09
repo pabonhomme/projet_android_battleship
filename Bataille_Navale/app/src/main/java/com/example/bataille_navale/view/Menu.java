@@ -30,7 +30,7 @@ public class Menu extends FragmentActivity {
         button_menu_jouer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 gmanager.lancerPartie();
-                Intent intent = new Intent(Menu.this, Placement_Bateau.class);
+                Intent intent = new Intent(Menu.this, Form_Joueur.class);
                 startActivity(intent);
                 finish();
             }

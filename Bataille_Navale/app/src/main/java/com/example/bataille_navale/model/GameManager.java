@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class GameManager {
 
     private static GameManager instanceUnique;
-    private String pseudoGagnant;
     private Joueur j1;
     private Joueur j2;
     private Joueur joueurEnCours;
@@ -35,8 +34,6 @@ public class GameManager {
     public void lancerPartie() {
        j1 = new Joueur();
        j2 = new Joueur();
-       j1.setPseudo("Paul");
-       j2.setPseudo("Théo");
        setPlateauxAdverses(j1,j2);
        setJoueurEnCours(j1);
        setAjoue(false);
@@ -116,14 +113,6 @@ public class GameManager {
 
     public void setJ2(Joueur j2) {
         this.j2 = j2;
-    }
-
-    public String getPseudoGagnant() {
-        return pseudoGagnant;
-    }
-
-    public void setPseudoGagnant(String pseudoGagnant) {
-        this.pseudoGagnant = pseudoGagnant;
     }
 
     public boolean getaTouche() {

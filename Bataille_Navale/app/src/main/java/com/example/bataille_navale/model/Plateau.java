@@ -11,18 +11,16 @@ public class Plateau {
 
     /*--- définition des attributs du plateau ---*/
     public static final int TAILLE_PLATEAU = 10;
-    public static final int [] TAILLE_NAVIRES = {5,4,3,2,2,1,1}; // temporairement on a 4 bateaux
+    public static final int [] TAILLE_NAVIRES = {5,4,3,3,2}; // temporairement on a 4 bateaux
     public static final int NB_BATEAUX = TAILLE_NAVIRES.length;
-//    private final Bateau [] navires = new Bateau[PLACEMENT.length]; // on crée un tableau de PLACEMENT.length bâteaux
     private ArrayList<Bateau> navires = new ArrayList<>();
-    private ArrayList<Cellule> grille = new ArrayList<>(); // on crée une grille de 100 cases
+    private ArrayList<Cellule> grille = new ArrayList<>();
 
     /**
      * constructeur de Plateau
      */
     public Plateau(){
         creeGrille();
-//        creerNavires();
     }
 
     /**
@@ -35,14 +33,6 @@ public class Plateau {
             }
         }
     }
-
-    /**
-     * on crée les navires en leur donnant une taille, PLACEMENT[] donne la taille de chaque Bateau au constructeur
-     */
-//    public void creerNavires() {
-//        for (int i = 0; i < PLACEMENT.length; i++)
-//            navires[i] = new Bateau(PLACEMENT[i]);
-//    }
 
     /**
      * retourne la cellule aux ligne et colonne passées en paramètres
@@ -127,6 +117,18 @@ public class Plateau {
             return cel.faitPartieBateau();
         }
         return false;
+    }
+
+    /**
+     * Supprime les bateaux déjà placés pour pouvoir les replacer
+     */
+    public void resetBateaux(){
+        for(Cellule cell: grille){
+            if(cell.faitPartieBateau()){
+                cell.setNavire(null);
+            }
+        }
+        navires = new ArrayList<>();
     }
 
     /**

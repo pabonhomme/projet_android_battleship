@@ -72,6 +72,14 @@ public class Cellule {
         this.positions = positions;
     }
 
+    public Bateau getNavire() {
+        return navire;
+    }
+
+    public void setNavire(Bateau navire) {
+        this.navire = navire;
+    }
+
     @NonNull
     @Override
     public String toString() {
