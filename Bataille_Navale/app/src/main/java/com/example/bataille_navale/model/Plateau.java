@@ -11,7 +11,7 @@ public class Plateau {
 
     /*--- définition des attributs du plateau ---*/
     public static final int TAILLE_PLATEAU = 10;
-    public static final int [] TAILLE_NAVIRES = {5,4,3,3,2}; // temporairement on a 4 bateaux
+    public static final int [] TAILLE_NAVIRES = {5,4,3,3,2}; //on a 5 bateaux
     public static final int NB_BATEAUX = TAILLE_NAVIRES.length;
     private ArrayList<Bateau> navires = new ArrayList<>();
     private ArrayList<Cellule> grille = new ArrayList<>();
