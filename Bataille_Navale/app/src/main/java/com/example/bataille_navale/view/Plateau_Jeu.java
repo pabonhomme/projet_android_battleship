@@ -4,6 +4,7 @@ package com.example.bataille_navale.view;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -72,9 +73,18 @@ public class Plateau_Jeu extends AppCompatActivity {
                 }
 
                 if (gmanager.isPartieFinie()) {
-                    Intent intent = new Intent(Plateau_Jeu.this, Affichage_Gagnant.class);
-                    startActivity(intent);
-                    finish();
+                    suivant_jeu.setVisibility(View.GONE);
+                    Toast.makeText(Plateau_Jeu.this, "Bien joué ! Partie Terminée !",
+                            Toast.LENGTH_SHORT).show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(Plateau_Jeu.this, Affichage_Gagnant.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 2000);
                 }
             }
         });
