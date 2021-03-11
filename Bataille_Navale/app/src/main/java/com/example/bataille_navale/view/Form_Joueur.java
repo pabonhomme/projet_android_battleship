@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,10 +58,10 @@ public class Form_Joueur extends AppCompatActivity {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
                         pseudo_joueur_form.setText("");
                         inserez_pseudo_text.setText("Joueur 2 : veuillez rentrer votre pseudo");
-                        gmanager.setJoueurEnCours(gmanager.getJ2());
+                        gmanager.changementJoueur();
                     } else {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
-                        gmanager.setJoueurEnCours(gmanager.getJ1());
+                        gmanager.changementJoueur();
                         Intent intent = new Intent(Form_Joueur.this, Placement_Bateau.class);
                         startActivity(intent);
                         finish();
@@ -89,61 +90,61 @@ public class Form_Joueur extends AppCompatActivity {
     }
 
 
-    private void permissionPhoto() {
-
-        // With Android Level >= 23, you have to ask the user
-        // for permission to read/write data on the device.
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-
-            // Check if we have read/write permission
-            int readPermission = ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE);
-            int writePermission = ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-            if (writePermission != PackageManager.PERMISSION_GRANTED ||
-                    readPermission != PackageManager.PERMISSION_GRANTED) {
-                // If don't have permission so prompt the user.
-                this.requestPermissions(
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_ID_READ_WRITE_PERMISSION
-                );
-                return;
-            }
-        }
-        this.captureImage();
-    }
+//    private void permissionPhoto() {
+//
+//        // With Android Level >= 23, you have to ask the user
+//        // for permission to read/write data on the device.
+//        if (android.os.Build.VERSION.SDK_INT >= 23) {
+//
+//            // Check if we have read/write permission
+//            int readPermission = ActivityCompat.checkSelfPermission(this,
+//                    Manifest.permission.READ_EXTERNAL_STORAGE);
+//            int writePermission = ActivityCompat.checkSelfPermission(this,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//
+//            if (writePermission != PackageManager.PERMISSION_GRANTED ||
+//                    readPermission != PackageManager.PERMISSION_GRANTED) {
+//                // If don't have permission so prompt the user.
+//                this.requestPermissions(
+//                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                                Manifest.permission.READ_EXTERNAL_STORAGE},
+//                        REQUEST_ID_READ_WRITE_PERMISSION
+//                );
+//                return;
+//            }
+//        }
+//        this.captureImage();
+//    }
 
     // When you have the request results
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //
-        switch (requestCode) {
-            case REQUEST_ID_READ_WRITE_PERMISSION: {
-
-                // Note: If request is cancelled, the result arrays are empty.
-                // Permissions granted (read/write).
-                if (grantResults.length > 1
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-
-                    Toast.makeText(this, "Permission accordée!", Toast.LENGTH_LONG).show();
-
-                    this.captureImage();
-
-                }
-                // Cancelled or denied.
-                else {
-                    Toast.makeText(this, "Permission refusée!", Toast.LENGTH_LONG).show();
-                }
-                break;
-            }
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           String permissions[], int[] grantResults) {
+//
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        //
+//        switch (requestCode) {
+//            case REQUEST_ID_READ_WRITE_PERMISSION: {
+//
+//                // Note: If request is cancelled, the result arrays are empty.
+//                // Permissions granted (read/write).
+//                if (grantResults.length > 1
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
+//                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+//
+//                    Toast.makeText(this, "Permission accordée!", Toast.LENGTH_LONG).show();
+//
+//                    this.captureImage();
+//
+//                }
+//                // Cancelled or denied.
+//                else {
+//                    Toast.makeText(this, "Permission refusée!", Toast.LENGTH_LONG).show();
+//                }
+//                break;
+//            }
+//        }
+//    }
 
     // When results returned
     @Override
@@ -154,20 +155,21 @@ public class Form_Joueur extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Bitmap bp = (Bitmap) data.getExtras().get("data");
 //                ecrire
-                File photos = new File(getApplicationContext().getFilesDir(), "photos");
-                File file = new File(photos, "toto.png");
+//                File photos = new File(getApplicationContext().getFilesDir(), "photos");
+//                File file = new File(photos, "toto.png");
+//
+//                FileOutputStream fos = null;
+//                try {
+//                    fos = new FileOutputStream(file);
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//                bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
+//
+////                lire
+//                Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
 
-                FileOutputStream fos = null;
-                try {
-                    fos = new FileOutputStream(file);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
-
-//                lire
-                Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
-
+                Log.d("cam", bp.toString());
                 this.imageJoueur.setImageBitmap(bp);
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Action supprimée", Toast.LENGTH_LONG).show();
