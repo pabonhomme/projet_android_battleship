@@ -22,6 +22,7 @@ import com.example.bataille_navale.R;
 import com.example.bataille_navale.model.GameManager;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 public class Form_Joueur extends AppCompatActivity {
@@ -33,58 +34,57 @@ public class Form_Joueur extends AppCompatActivity {
     private Button bouton_suivant_form = null;
 
     private Button boutonPhoto = null;
-    private ImageView imageView = null;
+    private ImageView imageJoueur = null;
 
     private static final int REQUEST_ID_READ_WRITE_PERMISSION = 99;
     private static final int REQUEST_ID_IMAGE_CAPTURE = 100;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_infos_joueur);
 
-        inserez_pseudo_text =  findViewById(R.id.inserez_pseudo_text);
-        pseudo_joueur_form =  findViewById(R.id.pseudo_joueur_form);
+        inserez_pseudo_text = findViewById(R.id.inserez_pseudo_text);
+        pseudo_joueur_form = findViewById(R.id.pseudo_joueur_form);
         bouton_suivant_form = findViewById(R.id.bouton_suivant_form);
         boutonPhoto = findViewById(R.id.button_image);
-        imageView = findViewById(R.id.imageView);
+        imageJoueur = findViewById(R.id.imageJoueur);
 
         bouton_suivant_form.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if(!pseudo_joueur_form.getText().toString().equals("")){
-                   if(gmanager.getJoueurEnCours() == gmanager.getJ1()){
-                       gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
-                       pseudo_joueur_form.setText("");
-                       inserez_pseudo_text.setText("Joueur 2 : veuillez rentrer votre pseudo");
-                       gmanager.setJoueurEnCours(gmanager.getJ2());
-                   }
-                   else{
-                       gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
-                       gmanager.setJoueurEnCours(gmanager.getJ1());
-                       Intent intent = new Intent(Form_Joueur.this, Placement_Bateau.class);
-                       startActivity(intent);
-                       finish();
-                   }
-                }
-                else{
+                if (!pseudo_joueur_form.getText().toString().equals("")) {
+                    if (gmanager.getJoueurEnCours() == gmanager.getJ1()) {
+                        gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
+                        pseudo_joueur_form.setText("");
+                        inserez_pseudo_text.setText("Joueur 2 : veuillez rentrer votre pseudo");
+                        gmanager.setJoueurEnCours(gmanager.getJ2());
+                    } else {
+                        gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
+                        gmanager.setJoueurEnCours(gmanager.getJ1());
+                        Intent intent = new Intent(Form_Joueur.this, Placement_Bateau.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } else {
                     Toast.makeText(Form_Joueur.this, "Vous n'avez pas rentré votre pseudo", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-//        boutonPhoto.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                captureImage();
-//            }
-//        });
+        boutonPhoto.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                captureImage();
+            }
+        });
 
     }
 
     private void captureImage() {
-        // Create an implicit intent, for image capture.
+        // On crée un intent pour la caméra
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        // Start camera and wait for the results.
+        // On lance la caméra et on attend pour les résultats
         this.startActivityForResult(intent, REQUEST_ID_IMAGE_CAPTURE);
     }
 
@@ -115,7 +115,7 @@ public class Form_Joueur extends AppCompatActivity {
         this.captureImage();
     }
 
-     // When you have the request results
+    // When you have the request results
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -131,14 +131,14 @@ public class Form_Joueur extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED
                         && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
 
-                    Toast.makeText(this, "Permission granted!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Permission accordée!", Toast.LENGTH_LONG).show();
 
                     this.captureImage();
 
                 }
                 // Cancelled or denied.
                 else {
-                    Toast.makeText(this, "Permission denied!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Permission refusée!", Toast.LENGTH_LONG).show();
                 }
                 break;
             }
@@ -153,21 +153,26 @@ public class Form_Joueur extends AppCompatActivity {
         if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
             if (resultCode == RESULT_OK) {
                 Bitmap bp = (Bitmap) data.getExtras().get("data");
-                //ecrire
-                //File photos = new File(getApplicationContext().getFilesDir(), "photos");
-                //File file = new File(photos, "toto.png");
+//                ecrire
+                File photos = new File(getApplicationContext().getFilesDir(), "photos");
+                File file = new File(photos, "toto.png");
 
-                //FileOutputStream fos = new FileOutputStream(file);
-                //bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
 
-                //lire
-                //Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
+//                lire
+                Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
 
-                this.imageView.setImageBitmap(bp);
+                this.imageJoueur.setImageBitmap(bp);
             } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Action canceled", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Action supprimée", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Action Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Action ratée", Toast.LENGTH_LONG).show();
             }
         }
     }
