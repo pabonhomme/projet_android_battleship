@@ -56,8 +56,9 @@ public class Form_Joueur extends AppCompatActivity {
                 if (!pseudo_joueur_form.getText().toString().equals("")) {
                     if (gmanager.getJoueurEnCours() == gmanager.getJ1()) {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
-                        pseudo_joueur_form.setText("");
                         inserez_pseudo_text.setText("Joueur 2 : veuillez rentrer votre pseudo");
+                        pseudo_joueur_form.setText("");
+                        imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_foreground));
                         gmanager.changementJoueur();
                     } else {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
@@ -89,6 +90,39 @@ public class Form_Joueur extends AppCompatActivity {
         this.startActivityForResult(intent, REQUEST_ID_IMAGE_CAPTURE);
     }
 
+    // When results returned
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
+            if (resultCode == RESULT_OK) {
+                Bitmap bp = (Bitmap) data.getExtras().get("data");
+//                ecrire
+//                File photos = new File(getApplicationContext().getFilesDir(), "photos");
+//                File file = new File(photos, "toto.png");
+//
+//                FileOutputStream fos = null;
+//                try {
+//                    fos = new FileOutputStream(file);
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//                bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
+//
+////                lire
+//                Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                gmanager.getJoueurEnCours().setImageJoueur(bp);
+                this.imageJoueur.setImageBitmap(bp);
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Action supprimée", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Action ratée", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 
 //    private void permissionPhoto() {
 //
@@ -115,8 +149,8 @@ public class Form_Joueur extends AppCompatActivity {
 //        }
 //        this.captureImage();
 //    }
-
-    // When you have the request results
+//
+////     When you have the request results
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode,
 //                                           String permissions[], int[] grantResults) {
@@ -145,39 +179,6 @@ public class Form_Joueur extends AppCompatActivity {
 //            }
 //        }
 //    }
-
-    // When results returned
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
-            if (resultCode == RESULT_OK) {
-                Bitmap bp = (Bitmap) data.getExtras().get("data");
-//                ecrire
-//                File photos = new File(getApplicationContext().getFilesDir(), "photos");
-//                File file = new File(photos, "toto.png");
-//
-//                FileOutputStream fos = null;
-//                try {
-//                    fos = new FileOutputStream(file);
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
-//                bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
-//
-////                lire
-//                Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
-
-                Log.d("cam", bp.toString());
-                this.imageJoueur.setImageBitmap(bp);
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Action supprimée", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Action ratée", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
 
     @Override
     protected void onPause() {

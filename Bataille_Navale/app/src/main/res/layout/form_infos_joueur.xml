@@ -26,22 +26,29 @@
         android:layout_marginTop="150dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:hint="kouyk4..."
+        android:hint="Pseudo : kouyk4..."
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/imageJoueur"
+        app:layout_constraintBottom_toTopOf="@id/cardViewimageJoueur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageJoueur"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewimageJoueur"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/pseudo_joueur_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:ignore="VectorDrawableCompat" />
+        app:cardCornerRadius="150dp"
+            >
+        <ImageView
+            android:id="@+id/imageJoueur"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:ignore="VectorDrawableCompat" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/button_image"
@@ -49,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Prendre une photo"
-        app:layout_constraintTop_toBottomOf="@+id/imageJoueur"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewimageJoueur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

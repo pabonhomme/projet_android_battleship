@@ -1,6 +1,8 @@
 package com.example.bataille_navale.model;
 
 
+import android.graphics.Bitmap;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -10,6 +12,7 @@ public class Joueur implements Comparable<Joueur>, Serializable {
 
     private String pseudo;
     private int score;
+    private Bitmap imageJoueur;
     private Plateau plateau;
     private Plateau plateauAdverse;
 
@@ -112,6 +115,14 @@ public class Joueur implements Comparable<Joueur>, Serializable {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public Bitmap getImageJoueur() {
+        return imageJoueur;
+    }
+
+    public void setImageJoueur(Bitmap imageJoueur) {
+        this.imageJoueur = imageJoueur;
     }
 
     public Plateau getPlateau() {

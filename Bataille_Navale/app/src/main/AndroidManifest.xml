@@ -37,7 +37,7 @@
 
         </activity>
 
-        <activity android:name=".view.Form_Joueur" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
+        <activity android:name=".view.Form_Joueur" android:theme="@style/Theme.Bataille_Navale.NoActionBar" >
 
         </activity>
     </application>
