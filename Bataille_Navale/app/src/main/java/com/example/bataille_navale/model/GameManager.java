@@ -61,6 +61,10 @@ public class GameManager {
         else {
             setJoueurEnCours(getJ1());
         }
+    }
+
+    public void changementTour(){
+        changementJoueur();
         setAjoue(false);
         setaTouche(false);
     }

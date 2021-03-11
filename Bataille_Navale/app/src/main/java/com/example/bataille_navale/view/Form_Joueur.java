@@ -71,12 +71,12 @@ public class Form_Joueur extends AppCompatActivity {
             }
         });
 
-        boutonPhoto.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                captureImage();
-            }
-        });
+//        boutonPhoto.setOnClickListener(new Button.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                captureImage();
+//            }
+//        });
 
     }
 

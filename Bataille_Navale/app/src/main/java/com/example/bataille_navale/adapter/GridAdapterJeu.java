@@ -71,8 +71,11 @@ public class GridAdapterJeu extends BaseAdapter {
             else {
                 background = parent.getResources().getDrawable( R.drawable.plouf); // si y'a pas de bateau
             }
-            holder.getLeTextView().setBackground(background);
+        }else {
+            background = parent.getResources().getDrawable(R.drawable.eau_bg);
         }
+        holder.getLeTextView().setBackground(background);
+
 
         return convertView;
     }

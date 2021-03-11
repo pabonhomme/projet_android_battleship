@@ -61,8 +61,10 @@ public class GridAdapterPlacement extends BaseAdapter {
 
         if (cell.faitPartieBateau()) {
             background = parent.getResources().getDrawable(R.drawable.placement_bateau);
-            holder.getLeTextView().setBackground(background);
+        } else {
+            background = parent.getResources().getDrawable(R.drawable.eau_bg);
         }
+        holder.getLeTextView().setBackground(background);
 
 
         return convertView;

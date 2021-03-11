@@ -41,7 +41,7 @@ public class Plateau_Jeu extends AppCompatActivity {
         suivant_jeu = findViewById(R.id.suivant_jeu);
 
         nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
-        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateau().nombreBateauxCoules())); // set texte nb bateaux restants
+        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
 
         final GridView gridView = findViewById(R.id.gridView_jeu); // on récupère la grid
         final GridAdapterJeu gridAdapter = new GridAdapterJeu(this, gmanager.getJoueurEnCours().getPlateauAdverse().getGrille()); // on set l'adapter
@@ -51,10 +51,7 @@ public class Plateau_Jeu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
-                // quand on clique sur une case on change la couleur de la case
-                TextView leTextView = view.findViewById(R.id.cellule); // on récupère la textView
-
-                Cellule cell = gmanager.getJoueurEnCours().getPlateauAdverse().getGrille().get(position);
+                Cellule cell = (Cellule) gridAdapter.getItem(position);
 
 
                 if (!gmanager.getajoue() || gmanager.getaTouche()) {
@@ -62,7 +59,7 @@ public class Plateau_Jeu extends AppCompatActivity {
                         cell.visite();
                         gmanager.setaTouche(cell.faitPartieBateau());
                         gmanager.setAjoue(true);
-                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
+                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
                         gridAdapter.notifyDataSetChanged();
 
                     } else {
@@ -73,10 +70,6 @@ public class Plateau_Jeu extends AppCompatActivity {
                     Toast.makeText(Plateau_Jeu.this, "Vous avez déjà joué, cliquez sur suivant",
                             Toast.LENGTH_SHORT).show();
                 }
-
-                // This tells the GridView to redraw itself
-                // in turn calling your CustomGridAdapterDeux's getView method again for each cell
-//                gridAdapter.notifyDataSetChanged();
 
                 if (gmanager.isPartieFinie()) {
                     Intent intent = new Intent(Plateau_Jeu.this, Affichage_Gagnant.class);
@@ -89,13 +82,12 @@ public class Plateau_Jeu extends AppCompatActivity {
 
         suivant_jeu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
                 if (gmanager.getajoue()) {
                     if (!gmanager.getaTouche()) {
-                        gmanager.changementJoueur();
-                        Intent intent = new Intent(Plateau_Jeu.this, Plateau_Jeu.class);
-                        startActivity(intent);
-                        finish();
+                        gmanager.changementTour();
+                        nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
+                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
+                        gridAdapter.refreshData(gmanager.getJoueurEnCours().getPlateauAdverse().getGrille());
                     } else {
                         Toast.makeText(Plateau_Jeu.this, "Vous avez touché un bateau, vous pouvez rejouer",
                                 Toast.LENGTH_SHORT).show();
@@ -104,21 +96,6 @@ public class Plateau_Jeu extends AppCompatActivity {
                     Toast.makeText(Plateau_Jeu.this, "Vous n'avez pas encore joué, il faut tirer sur une case",
                             Toast.LENGTH_SHORT).show();
                 }
-
-//                if (gmanager.getajoue()) {
-//                    if (!gmanager.getaTouche()) {
-//                        gmanager.changementJoueur();
-//                        nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
-//                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX-gmanager.getJoueurEnCours().getPlateau().nombreBateauxCoules())); // set texte nb bateaux restants
-//                        gridAdapter.refreshData(gmanager.getJoueurEnCours().getPlateauAdverse().getGrille());
-//                    } else {
-//                        Toast.makeText(Plateau_Jeu.this, "Vous avez touché un bateau, vous pouvez rejouer",
-//                                Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(Plateau_Jeu.this, "Vous n'avez pas encore joué, il faut tirer sur une case",
-//                            Toast.LENGTH_SHORT).show();
-//                }
             }
         });
     }
