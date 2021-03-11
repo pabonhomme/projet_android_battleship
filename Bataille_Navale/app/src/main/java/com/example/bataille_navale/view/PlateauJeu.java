@@ -22,13 +22,14 @@ import com.example.bataille_navale.adapter.GridAdapterJeu;
 import com.example.bataille_navale.model.Cellule;
 import com.example.bataille_navale.model.GameManager;
 
-public class Plateau_Jeu extends AppCompatActivity {
+public class PlateauJeu extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
 
     private TextView nomJoueur_jeu = null;
     private TextView bat_restant_jeu = null;
     private Button suivant_jeu = null;
+    private Button quitter_jeu = null;
 
     AlphaAnimation animation = null;
 
@@ -40,6 +41,7 @@ public class Plateau_Jeu extends AppCompatActivity {
         nomJoueur_jeu = findViewById(R.id.nomJoueur_jeu);
         bat_restant_jeu = findViewById(R.id.bat_restant_jeu);
         suivant_jeu = findViewById(R.id.suivant_jeu);
+        quitter_jeu = findViewById(R.id.quitter_jeu);
 
         nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
         bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
@@ -64,23 +66,23 @@ public class Plateau_Jeu extends AppCompatActivity {
                         gridAdapter.notifyDataSetChanged();
 
                     } else {
-                        Toast.makeText(Plateau_Jeu.this, "La case en " + cell.getPositions().first + "," + cell.getPositions().second + " est déjà touchée",
+                        Toast.makeText(PlateauJeu.this, "La case en " + cell.getPositions().first + "," + cell.getPositions().second + " est déjà touchée",
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(Plateau_Jeu.this, "Vous avez déjà joué, cliquez sur suivant",
+                    Toast.makeText(PlateauJeu.this, "Vous avez déjà joué, cliquez sur suivant",
                             Toast.LENGTH_SHORT).show();
                 }
 
                 if (gmanager.isPartieFinie()) {
                     suivant_jeu.setVisibility(View.GONE);
-                    Toast.makeText(Plateau_Jeu.this, "Bien joué ! Partie Terminée !",
+                    Toast.makeText(PlateauJeu.this, "Bien joué ! Partie Terminée !",
                             Toast.LENGTH_SHORT).show();
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Intent intent = new Intent(Plateau_Jeu.this, Affichage_Gagnant.class);
+                            Intent intent = new Intent(PlateauJeu.this, AffichageFinPartie.class);
                             startActivity(intent);
                             finish();
                         }
@@ -99,13 +101,29 @@ public class Plateau_Jeu extends AppCompatActivity {
                         bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
                         gridAdapter.refreshData(gmanager.getJoueurEnCours().getPlateauAdverse().getGrille());
                     } else {
-                        Toast.makeText(Plateau_Jeu.this, "Vous avez touché un bateau, vous pouvez rejouer",
+                        Toast.makeText(PlateauJeu.this, "Vous avez touché un bateau, vous pouvez rejouer",
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(Plateau_Jeu.this, "Vous n'avez pas encore joué, il faut tirer sur une case",
+                    Toast.makeText(PlateauJeu.this, "Vous n'avez pas encore joué, il faut tirer sur une case",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        quitter_jeu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Toast.makeText(PlateauJeu.this, "Lâche ! Vous venez de déclarer forfait",
+                        Toast.LENGTH_SHORT).show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(PlateauJeu.this, Menu.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 2000);
             }
         });
     }

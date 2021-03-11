@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/nomJoueur_gagnant"
+        android:id="@+id/nomJoueur_gagnant_finPartie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -14,30 +14,41 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/pseudo_plateau_adverse"
+        app:layout_constraintEnd_toStartOf="@+id/cardViewimageJoueur_finPartie"
+        app:layout_constraintBottom_toTopOf="@id/pseudo_plateau_adverse_finPartie"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/nomJoueur_gagnant"
-        app:layout_constraintBottom_toTopOf="@id/pseudo_plateau_adverse"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewimageJoueur_finPartie"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintTop_toTopOf="@id/nomJoueur_gagnant_finPartie"
+        app:layout_constraintBottom_toBottomOf="@id/nomJoueur_gagnant_finPartie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:ignore="VectorDrawableCompat"/>
+        app:layout_constraintStart_toEndOf="@+id/nomJoueur_gagnant_finPartie">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imageGagnant_finPartie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:srcCompat="@drawable/image_joueur_base"
+                tools:ignore="VectorDrawableCompat"
+                android:contentDescription="imageJoueur" />
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
     <TextView
-        android:id="@+id/pseudo_plateau_adverse"
+        android:id="@+id/pseudo_plateau_adverse_finPartie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -52,11 +63,11 @@
         android:id="@+id/coorTop_jeu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/gridView_jeu"
-        app:layout_constraintStart_toStartOf="@id/gridView_jeu"
+        app:layout_constraintEnd_toEndOf="@id/gridView_finPartie"
+        app:layout_constraintStart_toStartOf="@id/gridView_finPartie"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/gridView_jeu">
+        app:layout_constraintBottom_toTopOf="@id/gridView_finPartie">
 
         <TextView
             android:layout_width="0dp"
@@ -129,9 +140,9 @@
         android:orientation="vertical"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gridView_jeu"
-        app:layout_constraintBottom_toBottomOf="@id/gridView_jeu"
-        app:layout_constraintEnd_toStartOf="@id/gridView_jeu">
+        app:layout_constraintTop_toTopOf="@id/gridView_finPartie"
+        app:layout_constraintBottom_toBottomOf="@id/gridView_finPartie"
+        app:layout_constraintEnd_toStartOf="@id/gridView_finPartie">
 
         <TextView
             android:layout_width="wrap_content"
@@ -200,7 +211,7 @@
 
 
     <GridView
-        android:id="@+id/gridView_jeu"
+        android:id="@+id/gridView_finPartie"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -219,18 +230,31 @@
         app:layout_constraintTop_toBottomOf="@id/coorTop_jeu" />
 
     <Button
-        android:id="@+id/menu_gagnant"
-        android:layout_width="225dp"
-        android:layout_height="100dp"
+        android:id="@+id/rejouer_gagnant_finPartie"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:gravity="center"
-        android:text="Menu"
+        android:text="@string/rejouer"
         android:textColor="#F8F6F6"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="#0048FF"
+        app:layout_constraintTop_toBottomOf="@id/gridView_finPartie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gridView_finPartie"/>
+
+    <Button
+        android:id="@+id/menu_gagnant_finPartie"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="@string/menu"
+        android:textColor="#F8F6F6"
+        android:textSize="20sp"
         app:backgroundTint="#0048FF"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/gridView_jeu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/rejouer_gagnant_finPartie"
+        app:layout_constraintStart_toEndOf="@id/rejouer_gagnant_finPartie"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

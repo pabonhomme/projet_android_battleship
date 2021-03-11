@@ -1,13 +1,9 @@
 package com.example.bataille_navale.view;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,22 +13,18 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.model.GameManager;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-
-public class Form_Joueur extends AppCompatActivity {
+public class FormJoueur extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
 
     private TextView inserez_pseudo_text = null;
     private EditText pseudo_joueur_form = null;
     private Button bouton_suivant_form = null;
+    private Button bouton_retour_form = null;
 
     private Button boutonPhoto = null;
     private ImageView imageJoueur = null;
@@ -48,6 +40,7 @@ public class Form_Joueur extends AppCompatActivity {
         inserez_pseudo_text = findViewById(R.id.inserez_pseudo_text);
         pseudo_joueur_form = findViewById(R.id.pseudo_joueur_form);
         bouton_suivant_form = findViewById(R.id.bouton_suivant_form);
+        bouton_retour_form = findViewById(R.id.bouton_retour_form);
         boutonPhoto = findViewById(R.id.button_image);
         imageJoueur = findViewById(R.id.imageJoueur);
 
@@ -58,17 +51,17 @@ public class Form_Joueur extends AppCompatActivity {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
                         inserez_pseudo_text.setText("Joueur 2 : veuillez rentrer votre pseudo");
                         pseudo_joueur_form.setText("");
-                        imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_foreground));
+                        imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.image_joueur_base));
                         gmanager.changementJoueur();
                     } else {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
                         gmanager.changementJoueur();
-                        Intent intent = new Intent(Form_Joueur.this, Placement_Bateau.class);
+                        Intent intent = new Intent(FormJoueur.this, PlacementBateau.class);
                         startActivity(intent);
                         finish();
                     }
                 } else {
-                    Toast.makeText(Form_Joueur.this, "Vous n'avez pas rentré votre pseudo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormJoueur.this, "Vous n'avez pas rentré votre pseudo", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -77,6 +70,15 @@ public class Form_Joueur extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 captureImage();
+            }
+        });
+
+        bouton_retour_form.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FormJoueur.this, Menu.class);
+                startActivity(intent);
+                finish();
             }
         });
 

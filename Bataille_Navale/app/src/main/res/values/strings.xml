@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Bataille Navale</string>
+    <string name="accueil_msg">Bienvenue sur la meilleure application de bataille navale !</string>
     <string name="commencer">Commencer</string>
     <string name="jouer">Jouer</string>
     <string name="retour">Retour</string>
-    <string name="accueil_msg">Bienvenue sur la meilleure application de bataille navale !</string>
+    <string name="rejouer">Rejouer</string>
+    <string name="menu">Menu</string>
     <string name="parametres_menu">Paramètres</string>
     <string name="_0">0</string>
     <string name="_1">1</string>
@@ -19,14 +21,13 @@
     <string name="pseudo_placement" formatted="false">%s : Veuillez placer vos bateaux</string>
     <string name="bat_restant_placement" formatted="false">Il reste %d bateaux à placer</string>
     <string name="taille_bat_placement" formatted="false">Placez le bateau de taille %d</string>
-
-    <string name="nomJoueur_jeu" formatted="false">C\'est au tour de %s de jouer</string>
-    <string name="bat_restant_jeu" formatted="false">Il reste %d bateaux à détruire !</string>
-
     <string name="vertical_placement">Vertical</string>
     <string name="horizontal_placement">Horizontal</string>
     <string name="suivant_bouton">Suivant</string>
 
+    <string name="nomJoueur_jeu" formatted="false">C\'est au tour de %s de jouer</string>
+    <string name="bat_restant_jeu" formatted="false">Il reste %d bateaux à détruire !</string>
+
     <string name="pseudo_gagnant" formatted="false">Le gagnant est %s!</string>
-    <string name="pseudo_plateau_adverse" formatted="false">Plateau de %s:</string>
+    <string name="pseudo_plateau_gagnant" formatted="false">Plateau de %s:</string>
 </resources>

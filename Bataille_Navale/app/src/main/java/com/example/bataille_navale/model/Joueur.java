@@ -12,7 +12,7 @@ public class Joueur implements Comparable<Joueur>, Serializable {
 
     private String pseudo;
     private int score;
-    private Bitmap imageJoueur;
+    private Bitmap imageJoueur = null;
     private Plateau plateau;
     private Plateau plateauAdverse;
 

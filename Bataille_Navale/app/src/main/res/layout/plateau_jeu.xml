@@ -222,8 +222,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/suivant_bouton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gridView_jeu"
+        app:layout_constraintEnd_toStartOf="@id/quitter_jeu"
+        app:layout_constraintTop_toBottomOf="@id/gridView_jeu"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/quitter_jeu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quitter"
+        app:layout_constraintStart_toEndOf="@id/suivant_jeu"
+        app:layout_constraintEnd_toEndOf="@id/gridView_jeu"
         app:layout_constraintTop_toBottomOf="@id/gridView_jeu"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

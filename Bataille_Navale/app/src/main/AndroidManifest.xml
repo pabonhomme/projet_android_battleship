@@ -27,17 +27,17 @@
         <activity android:name=".view.Menu" android:theme="@style/Theme.Bataille_Navale.NoActionBar">
 
         </activity>
-        <activity android:name=".view.Placement_Bateau" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
+        <activity android:name=".view.PlacementBateau" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".view.Plateau_Jeu" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
+        <activity android:name=".view.PlateauJeu" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".view.Affichage_Gagnant" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
+        <activity android:name=".view.AffichageFinPartie" android:theme="@style/Theme.Bataille_Navale.NoActionBar" android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".view.Form_Joueur" android:theme="@style/Theme.Bataille_Navale.NoActionBar" >
+        <activity android:name=".view.FormJoueur" android:theme="@style/Theme.Bataille_Navale.NoActionBar" >
 
         </activity>
     </application>

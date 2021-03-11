@@ -34,26 +34,53 @@ public class GameManager {
     public void lancerPartie() {
        j1 = new Joueur();
        j2 = new Joueur();
-       setPlateauxAdverses(j1,j2);
+       setPlateauxAdverses();
        setJoueurEnCours(j1);
        setAjoue(false);
        setaTouche(false);
     }
 
-    public boolean isPartieFinie(){
-        return joueurEnCours.getPlateauAdverse().isPlateauCoule();
+    /**
+     * permet aux joueurs de rejouer sans perdre leurs pseudos
+     */
+    public void rejouer() {
+        resetPlateauxJoueurs();
+        setPlateauxAdverses();
+        setJoueurEnCours(j1);
+        setAjoue(false);
+        setaTouche(false);
     }
 
     /**
-     * permet de mettre les plateauw adverses sur chaque joueur
-     * @param j1 Joueur 1
-     * @param j2 Joueur 2
+     * remet les plateaux des joueurs à 0
      */
-    private void setPlateauxAdverses(Joueur j1, Joueur j2) {
+    private void resetPlateauxJoueurs(){
+        j1.setPlateau(new Plateau());
+        j2.setPlateau(new Plateau());
+        j1.setScore(0);
+        j2.setScore(0);
+    }
+
+    /**
+     * permet de mettre les plateaux adverses sur chaque joueur
+     */
+    private void setPlateauxAdverses() {
         j1.setPlateauAdverse(j2.getPlateau());
         j2.setPlateauAdverse(j1.getPlateau());
     }
 
+    /**
+     * change de tour dans la partie en cours
+     */
+    public void changementTour(){
+        changementJoueur();
+        setAjoue(false);
+        setaTouche(false);
+    }
+
+    /**
+     * change le joueur courant
+     */
     public void changementJoueur(){
         if(getJoueurEnCours() == getJ1()){
             setJoueurEnCours(getJ2());
@@ -63,36 +90,12 @@ public class GameManager {
         }
     }
 
-    public void changementTour(){
-        changementJoueur();
-        setAjoue(false);
-        setaTouche(false);
-    }
-
-    public void test() {
-//        System.out.print(plateau);
-//        Scanner k = new Scanner(System.in); // je n'ai pas réussi à faire de test en mode console, j'aurai bien aimé
-//        System.out.println(plateau);
-//        while(!plateau.etatsBateaux()){
-//
-//            int ligne, colonne;
-//            System.out.print("Entrez la ligne suivie de la colonne : ");
-//            ligne = 5;
-//            colonne = 6;
-//            plateau.visite(ligne, colonne);
-//            if(plateau.faitPartieDeBateau(ligne, colonne)){
-//                if(plateau.estTouchee(ligne, colonne)){
-//                    System.out.println("Bâteau détruit !");
-//                } else{
-//                    System.out.println("Bâteau endommagé !");
-//                }
-//                System.out.println(plateau);
-//            } else {
-//                System.out.println("Vide !");
-//                System.out.println(plateau);
-//            }
-//        }
-
+    /**
+     * vérifie si la partie est finie
+     * @return boolean
+     */
+    public boolean isPartieFinie(){
+        return joueurEnCours.getPlateauAdverse().isPlateauCoule();
     }
 
     public Joueur getJoueurEnCours() {

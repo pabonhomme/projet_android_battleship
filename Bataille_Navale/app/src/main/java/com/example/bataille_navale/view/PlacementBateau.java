@@ -20,7 +20,7 @@ import com.example.bataille_navale.model.Cellule;
 import com.example.bataille_navale.model.GameManager;
 import com.example.bataille_navale.model.Orientation;
 
-public class Placement_Bateau extends AppCompatActivity {
+public class PlacementBateau extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
 
@@ -72,7 +72,7 @@ public class Placement_Bateau extends AppCompatActivity {
                             taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, gmanager.getJoueurEnCours().getPlateau().TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
                         }
                     } else {
-                        Toast.makeText(Placement_Bateau.this, "Le bateau ne peut pas être positionné à cette position", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlacementBateau.this, "Le bateau ne peut pas être positionné à cette position", Toast.LENGTH_SHORT).show();
                     }
                 }
                 // This tells the GridView to redraw itself
@@ -92,12 +92,12 @@ public class Placement_Bateau extends AppCompatActivity {
                         taille_bat_placement.setVisibility(View.VISIBLE);
                         gridAdapterPlacement.refreshData(gmanager.getJoueurEnCours().getPlateau().getGrille());
                     } else {
-                        Intent intent = new Intent(Placement_Bateau.this, Plateau_Jeu.class);
+                        Intent intent = new Intent(PlacementBateau.this, PlateauJeu.class);
                         startActivity(intent);
                         finish();
                     }
                 } else {
-                    Toast.makeText(Placement_Bateau.this, "Vous n'avez pas placé tous les bateaux", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlacementBateau.this, "Vous n'avez pas placé tous les bateaux", Toast.LENGTH_SHORT).show();
                 }
 
             }

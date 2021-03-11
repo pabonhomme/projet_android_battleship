@@ -36,7 +36,7 @@
         android:id="@+id/cardViewimageJoueur"
         android:layout_width="305dp"
         android:layout_height="305dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/design_default_color_on_primary"
         app:cardCornerRadius="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,8 +53,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@drawable/ic_launcher_foreground"
-                tools:ignore="VectorDrawableCompat" />
+                android:src="@drawable/image_joueur_base"
+                tools:ignore="VectorDrawableCompat"
+                android:contentDescription="imageJoueur" />
         </androidx.cardview.widget.CardView>
     </androidx.cardview.widget.CardView>
 
@@ -67,14 +68,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardViewimageJoueur" />
-
     <Button
         android:id="@+id/bouton_suivant_form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:text="@string/suivant_bouton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/button_image"
         app:layout_constraintTop_toBottomOf="@id/button_image" />
+
+    <Button
+        android:id="@+id/bouton_retour_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="@string/retour"
+        app:layout_constraintStart_toStartOf="@id/button_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bouton_suivant_form" />
 </androidx.constraintlayout.widget.ConstraintLayout>
