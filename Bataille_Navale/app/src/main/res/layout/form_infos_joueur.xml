@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
 
     <TextView
@@ -11,13 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="Joueur 1 : veuillez rentrer votre pseudo"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Joueur 1 : veuillez rentrer votre pseudo"
         app:layout_constraintBottom_toTopOf="@id/pseudo_joueur_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/pseudo_joueur_form"
@@ -25,29 +25,37 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:gravity="center"
-        android:textAlignment="center"
         android:hint="Pseudo : kouyk4..."
-        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@id/cardViewimageJoueur"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewimageJoueur"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:layout_constraintTop_toBottomOf="@+id/pseudo_joueur_form"
+        android:layout_width="305dp"
+        android:layout_height="305dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="150dp"
-            >
-        <ImageView
-            android:id="@+id/imageJoueur"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            app:srcCompat="@drawable/ic_launcher_foreground"
-            tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintTop_toBottomOf="@+id/pseudo_joueur_form">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="150dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imageJoueur"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_launcher_foreground"
+                tools:ignore="VectorDrawableCompat" />
+        </androidx.cardview.widget.CardView>
     </androidx.cardview.widget.CardView>
 
     <Button
@@ -56,9 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Prendre une photo"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewimageJoueur"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewimageJoueur" />
 
     <Button
         android:id="@+id/bouton_suivant_form"
@@ -66,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/suivant_bouton"
-        app:layout_constraintTop_toBottomOf="@id/button_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>
