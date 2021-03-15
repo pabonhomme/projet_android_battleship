@@ -9,9 +9,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
+import com.example.bataille_navale.model.GameManager;
+
+import java.io.FileNotFoundException;
 
 public class Accueil extends AppCompatActivity {
 
+    GameManager gmanager = GameManager.getInstance();
+
+    public static final String NAME_FILE = "historique_parties";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,6 +27,11 @@ public class Accueil extends AppCompatActivity {
         Button button = findViewById(R.id.accueil_commencer);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                try {
+                    gmanager.chargerDonnees(openFileInput(NAME_FILE));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(Accueil.this, Menu.class);
                 startActivity(intent);
                 finish();

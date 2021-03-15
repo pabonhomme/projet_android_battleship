@@ -40,6 +40,10 @@
         <activity android:name=".view.FormJoueur" android:theme="@style/Theme.Bataille_Navale.NoActionBar" >
 
         </activity>
+
+        <activity android:name=".view.HistoriqueParties" android:theme="@style/Theme.Bataille_Navale.NoActionBar" >
+
+        </activity>
     </application>
 
 </manifest>

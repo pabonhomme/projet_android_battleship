@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bataille_navale.R;
 
-public class MonViewHolder extends RecyclerView.ViewHolder {
+public class MonViewHolderCellule extends RecyclerView.ViewHolder {
 
     private final TextView leTextView;
 
-    public MonViewHolder(@NonNull View itemView) {
+    public MonViewHolderCellule(@NonNull View itemView) {
         super(itemView);
         leTextView = itemView.findViewById(R.id.cellule);
     }

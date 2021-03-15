@@ -16,14 +16,16 @@ public class Menu extends FragmentActivity {
 
     private GameManager gmanager = GameManager.getInstance();
 
-    AlphaAnimation animation=null;
+    Button button_menu_jouer = null;
+    Button button_menu_historique = null;
+    Button button_menu_retour = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        Button button_menu_jouer = findViewById(R.id.menu_jouer);
+        button_menu_jouer = findViewById(R.id.menu_jouer);
         button_menu_jouer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 gmanager.lancerPartie();
@@ -33,7 +35,16 @@ public class Menu extends FragmentActivity {
             }
         });
 
-        Button button_menu_retour = findViewById(R.id.menu_retour);
+        button_menu_historique = findViewById(R.id.menu_historique);
+        button_menu_historique.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, HistoriqueParties.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        button_menu_retour = findViewById(R.id.menu_retour);
         button_menu_retour.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Accueil.class);

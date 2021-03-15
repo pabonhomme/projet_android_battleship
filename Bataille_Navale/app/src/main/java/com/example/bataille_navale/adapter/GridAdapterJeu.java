@@ -47,13 +47,13 @@ public class GridAdapterJeu extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        MonViewHolder holder;
+        MonViewHolderCellule holder;
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.cellule, parent, false);
-            holder = new MonViewHolder(convertView);
+            holder = new MonViewHolderCellule(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (MonViewHolder) convertView.getTag();
+            holder = (MonViewHolderCellule) convertView.getTag();
         }
 
         Cellule cell = listeCell.get(position);

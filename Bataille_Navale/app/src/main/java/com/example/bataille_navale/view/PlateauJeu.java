@@ -22,6 +22,8 @@ import com.example.bataille_navale.adapter.GridAdapterJeu;
 import com.example.bataille_navale.model.Cellule;
 import com.example.bataille_navale.model.GameManager;
 
+import java.io.FileNotFoundException;
+
 public class PlateauJeu extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
@@ -32,6 +34,8 @@ public class PlateauJeu extends AppCompatActivity {
     private Button quitter_jeu = null;
 
     AlphaAnimation animation = null;
+
+    public static final String NAME_FILE = "historique_parties";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,7 +79,13 @@ public class PlateauJeu extends AppCompatActivity {
                 }
 
                 if (gmanager.isPartieFinie()) {
+                    try {
+                        gmanager.sauvegarderDonnees(openFileOutput(NAME_FILE, MODE_PRIVATE));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     suivant_jeu.setVisibility(View.GONE);
+                    quitter_jeu.setVisibility(View.GONE);
                     Toast.makeText(PlateauJeu.this, R.string.bj_partie_terminee,
                             Toast.LENGTH_SHORT).show();
                     Handler handler = new Handler();

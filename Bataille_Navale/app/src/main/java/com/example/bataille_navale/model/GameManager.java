@@ -1,20 +1,33 @@
 package com.example.bataille_navale.model;
 
+import com.example.bataille_navale.sauveurs.Sauveur;
+import com.example.bataille_navale.sauveurs.ser.SauveurSer;
+import com.example.bataille_navale.sauveurs.stub.Stub;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class GameManager {
 
     private static GameManager instanceUnique;
+    private final Sauveur stub = new Stub();
+    private final Sauveur leSauveur = new SauveurSer();
     private Joueur j1;
     private Joueur j2;
     private Joueur joueurEnCours;
     private boolean aTouche;
     private boolean ajoue;
+    private Partie partieEnCours;
+    private List<Partie> historique = new ArrayList<>();
 
     /**
      * constructeur de manager
      */
     private GameManager(){
+
     }
 
     /**
@@ -29,9 +42,24 @@ public class GameManager {
     }
 
     /**
+     * permet de charger les données à partir d'un fichier
+     */
+    public void chargerDonnees(FileInputStream file){
+        historique = leSauveur.chargerStats(file);
+    }
+
+    /**
+     * permet de sauvegarder les données dans un fichier
+     */
+    public void sauvegarderDonnees(FileOutputStream file){
+        leSauveur.sauvegarderStats(historique, file);
+    }
+
+    /**
      * méthode qui permet de lancer une nouvelle partie
      */
     public void lancerPartie() {
+       setPartieEnCours(new Partie());
        setJ1(new Joueur());
        setJ2(new Joueur());
        setPlateauxAdverses();
@@ -95,7 +123,18 @@ public class GameManager {
      * @return boolean
      */
     public boolean isPartieFinie(){
-        return joueurEnCours.getPlateauAdverse().isPlateauCoule();
+        if(joueurEnCours.getPlateauAdverse().isPlateauCoule()){
+            partieEnCours.setjGagnant(getJoueurEnCours());
+            if(getJoueurEnCours() == j1){
+                partieEnCours.setjPerdant(j2);
+            }
+            else{
+                partieEnCours.setjPerdant(j1);
+            }
+            historique.add(partieEnCours);
+            return true;
+        }
+        return false;
     }
 
     public Joueur getJoueurEnCours() {
@@ -136,5 +175,20 @@ public class GameManager {
 
     public void setAjoue(boolean ajoue) {
         this.ajoue = ajoue;
+    }
+    public List<Partie> getHistorique() {
+        return historique;
+    }
+
+    public void setHistorique(List<Partie> historique) {
+        this.historique = historique;
+    }
+
+    public Partie getPartieEnCours() {
+        return partieEnCours;
+    }
+
+    public void setPartieEnCours(Partie partieEnCours) {
+        this.partieEnCours = partieEnCours;
     }
 }

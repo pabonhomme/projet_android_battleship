@@ -6,7 +6,7 @@
     <string name="retour">Retour</string>
     <string name="rejouer">Rejouer</string>
     <string name="menu">Menu</string>
-    <string name="parametres_menu">Paramètres</string>
+    <string name="historique_menu">Historique des parties</string>
 
     <string name="joueur1_rentrer_pseudo">Joueur 1 : veuillez rentrer votre pseudo</string>
     <string name="joueur2_rentrer_pseudo">Joueur 2 : veuillez rentrer votre pseudo</string>
