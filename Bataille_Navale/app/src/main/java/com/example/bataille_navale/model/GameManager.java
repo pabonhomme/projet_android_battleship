@@ -32,8 +32,8 @@ public class GameManager {
      * méthode qui permet de lancer une nouvelle partie
      */
     public void lancerPartie() {
-       j1 = new Joueur();
-       j2 = new Joueur();
+       setJ1(new Joueur());
+       setJ2(new Joueur());
        setPlateauxAdverses();
        setJoueurEnCours(j1);
        setAjoue(false);

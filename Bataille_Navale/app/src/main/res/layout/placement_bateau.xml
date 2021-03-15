@@ -253,7 +253,7 @@
         android:id="@+id/text_orientation_placement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choisissez l'orientation du bateau :"
+        android:text="@string/choisissez_l_orientation_du_bateau_placement"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="@id/orientation_placement"

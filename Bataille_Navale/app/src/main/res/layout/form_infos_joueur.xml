@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Joueur 1 : veuillez rentrer votre pseudo"
+        android:text="@string/joueur1_rentrer_pseudo"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/pseudo_joueur_form"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:gravity="center"
-        android:hint="Pseudo : kouyk4..."
+        android:hint="@string/pseudo_kouyk4_form"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@id/cardViewimageJoueur"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
                 android:gravity="center"
                 android:src="@drawable/image_joueur_base"
                 tools:ignore="VectorDrawableCompat"
-                android:contentDescription="imageJoueur" />
+                android:contentDescription="@string/photo_de_profil_du_joueur_form" />
         </androidx.cardview.widget.CardView>
     </androidx.cardview.widget.CardView>
 
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Prendre une photo"
+        android:text="@string/prendre_une_photo_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardViewimageJoueur" />

@@ -7,6 +7,16 @@
     <string name="rejouer">Rejouer</string>
     <string name="menu">Menu</string>
     <string name="parametres_menu">Paramètres</string>
+
+    <string name="joueur1_rentrer_pseudo">Joueur 1 : veuillez rentrer votre pseudo</string>
+    <string name="joueur2_rentrer_pseudo">Joueur 2 : veuillez rentrer votre pseudo</string>
+    <string name="pseudo_kouyk4_form">Pseudo : kouyk4...</string>
+    <string name="photo_de_profil_du_joueur_form">Photo de profil du joueur</string>
+    <string name="prendre_une_photo_form">Prendre une photo</string>
+    <string name="erreur_pseudo_non_rentre">Vous n\'avez pas rentré votre pseudo</string>
+    <string name="action_supprimee">Action supprimée</string>
+    <string name="action_ratee">Action ratée</string>
+
     <string name="_0">0</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
@@ -21,13 +31,25 @@
     <string name="pseudo_placement" formatted="false">%s : Veuillez placer vos bateaux</string>
     <string name="bat_restant_placement" formatted="false">Il reste %d bateaux à placer</string>
     <string name="taille_bat_placement" formatted="false">Placez le bateau de taille %d</string>
+    <string name="choisissez_l_orientation_du_bateau_placement">Choisissez l\'orientation du bateau :</string>
     <string name="vertical_placement">Vertical</string>
     <string name="horizontal_placement">Horizontal</string>
     <string name="suivant_bouton">Suivant</string>
+    <string name="erreur_placement_bateau">Le bateau ne peut pas être positionné à cette position</string>
+    <string name="erreur_bateaux_non_places">Vous n\'avez pas placé tous les bateaux</string>
 
     <string name="nomJoueur_jeu" formatted="false">C\'est au tour de %s de jouer</string>
     <string name="bat_restant_jeu" formatted="false">Il reste %d bateaux à détruire !</string>
+    <string name="case_deja_joue" formatted="false">La case en %d,%d est déjà touchée</string>
+    <string name="erreur_deja_joue">Vous avez déjà joué, cliquez sur suivant</string>
+    <string name="bj_partie_terminee">Bien joué ! Partie Terminée !</string>
+    <string name="erreur_bateau_touche_rejouer">Vous avez touché un bateau, vous pouvez rejouer</string>
+    <string name="erreur_pas_joue">Vous n\'avez pas encore joué, il faut tirer sur une case</string>
+    <string name="quitter_jeu">Quitter</string>
+    <string name="declare_forfait">Lâche ! Vous venez de déclarer forfait</string>
 
     <string name="pseudo_gagnant" formatted="false">Le gagnant est %s!</string>
     <string name="pseudo_plateau_gagnant" formatted="false">Plateau de %s:</string>
+
+
 </resources>

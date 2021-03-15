@@ -49,7 +49,7 @@ public class FormJoueur extends AppCompatActivity {
                 if (!pseudo_joueur_form.getText().toString().equals("")) {
                     if (gmanager.getJoueurEnCours() == gmanager.getJ1()) {
                         gmanager.getJoueurEnCours().setPseudo(pseudo_joueur_form.getText().toString());
-                        inserez_pseudo_text.setText("Joueur 2 : veuillez rentrer votre pseudo");
+                        inserez_pseudo_text.setText(R.string.joueur2_rentrer_pseudo);
                         pseudo_joueur_form.setText("");
                         imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.image_joueur_base));
                         gmanager.changementJoueur();
@@ -61,7 +61,7 @@ public class FormJoueur extends AppCompatActivity {
                         finish();
                     }
                 } else {
-                    Toast.makeText(FormJoueur.this, "Vous n'avez pas rentré votre pseudo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormJoueur.this, R.string.erreur_pseudo_non_rentre, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -118,9 +118,9 @@ public class FormJoueur extends AppCompatActivity {
                 gmanager.getJoueurEnCours().setImageJoueur(bp);
                 this.imageJoueur.setImageBitmap(bp);
             } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Action supprimée", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.action_supprimee, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Action ratée", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.action_ratee, Toast.LENGTH_LONG).show();
             }
         }
     }

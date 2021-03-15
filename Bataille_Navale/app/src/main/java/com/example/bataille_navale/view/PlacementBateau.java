@@ -72,7 +72,7 @@ public class PlacementBateau extends AppCompatActivity {
                             taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, gmanager.getJoueurEnCours().getPlateau().TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
                         }
                     } else {
-                        Toast.makeText(PlacementBateau.this, "Le bateau ne peut pas être positionné à cette position", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlacementBateau.this, R.string.erreur_placement_bateau, Toast.LENGTH_SHORT).show();
                     }
                 }
                 // This tells the GridView to redraw itself
@@ -97,7 +97,7 @@ public class PlacementBateau extends AppCompatActivity {
                         finish();
                     }
                 } else {
-                    Toast.makeText(PlacementBateau.this, "Vous n'avez pas placé tous les bateaux", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlacementBateau.this, R.string.erreur_bateaux_non_places, Toast.LENGTH_SHORT).show();
                 }
 
             }

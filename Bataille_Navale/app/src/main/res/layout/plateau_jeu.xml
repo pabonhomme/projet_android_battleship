@@ -231,7 +231,7 @@
         android:id="@+id/quitter_jeu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quitter"
+        android:text="@string/quitter_jeu"
         app:layout_constraintStart_toEndOf="@id/suivant_jeu"
         app:layout_constraintEnd_toEndOf="@id/gridView_jeu"
         app:layout_constraintTop_toBottomOf="@id/gridView_jeu"
