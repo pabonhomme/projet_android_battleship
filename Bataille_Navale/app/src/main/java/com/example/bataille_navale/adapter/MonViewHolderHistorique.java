@@ -17,6 +17,10 @@ public class MonViewHolderHistorique extends RecyclerView.ViewHolder {
         leTextViewHistorique = itemView.findViewById(R.id.cellule_historique);
     }
 
+    /**
+     * Permet de retourner le TextView
+     * @return Reoturne le textView
+     */
     public TextView getLeTextViewHistorique() {
         return leTextViewHistorique;
     }

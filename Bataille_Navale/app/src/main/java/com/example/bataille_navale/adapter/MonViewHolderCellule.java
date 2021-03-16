@@ -17,6 +17,10 @@ public class MonViewHolderCellule extends RecyclerView.ViewHolder {
         leTextView = itemView.findViewById(R.id.cellule);
     }
 
+    /**
+     * Permet de retourner le textView
+     * @return Retourne le textView
+     */
     public TextView getLeTextView() {
         return leTextView;
     }

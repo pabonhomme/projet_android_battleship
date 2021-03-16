@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+/**
+ * Classe qui permet de définir les joueurs
+ */
 public class Joueur implements Comparable<Joueur>, Serializable {
 
     private String pseudo;
@@ -56,6 +59,9 @@ public class Joueur implements Comparable<Joueur>, Serializable {
         }
     }
 
+    /**
+     * Permet d'initialiser le pseudo et le score du joueur
+     */
     private void initialisation(){
         setPseudo("");
         setScore(0);
@@ -101,42 +107,82 @@ public class Joueur implements Comparable<Joueur>, Serializable {
         return -1;
     }
 
+    /**
+     * Permet de retourner le pseudo du joueur
+     * @return Retourne le pseudo du joueur
+     */
     public String getPseudo(){
         return pseudo;
     }
 
+    /**
+     * Permet de mettre à jour le pseudo du joueur
+     * @param pseudo Nouvelle valeur du pseudo du joueur
+     */
     public void setPseudo(String pseudo){
         this.pseudo = pseudo;
     }
 
+    /**
+     * Permet de retourner le score du joueur
+     * @return Retourne le score du joueur
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Permet de mettre à jour le score du joueur
+     * @param score Nouvelle valeur du score du joueur
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
+    /**
+     * Permet de retourner l'image du joueur
+     * @return Retourne l'image du joueur
+     */
     public Bitmap getImageJoueur() {
         return imageJoueur;
     }
 
+    /**
+     * Permet de mettre à jour l'image du joueur
+     * @param imageJoueur Nouvelle valeur de l'image du joueur
+     */
     public void setImageJoueur(Bitmap imageJoueur) {
         this.imageJoueur = imageJoueur;
     }
 
+    /**
+     * Permet de retourner la valeur du plateau
+     * @return Retourne la valeur du plateau
+     */
     public Plateau getPlateau() {
         return plateau;
     }
 
+    /**
+     * Permet de mettre à jour la valeur du plateau
+     * @param plateau Nouvelle valeur du plateau
+     */
     public void setPlateau(Plateau plateau) {
         this.plateau = plateau;
     }
 
+    /**
+     * Permet de retourner le plateau de l'adversaire du joueur
+     * @return Retourne le plateau de l'adversaire du joueur
+     */
     public Plateau getPlateauAdverse() {
         return plateauAdverse;
     }
 
+    /**
+     * Permet de mettre à jour le plateau de l'adversaire du joueur
+     * @param plateauAdverse Nouvelle valeur du plateau de l'adversaire du joueur
+     */
     public void setPlateauAdverse(Plateau plateauAdverse) {
         this.plateauAdverse = plateauAdverse;
     }

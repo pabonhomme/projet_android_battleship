@@ -3,6 +3,9 @@ package com.example.bataille_navale.model;
 import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 
+/**
+ * Classe qui permet de définir les cellules
+ */
 public class Cellule {
 
     private Pair<Integer, Integer> positions;
@@ -20,7 +23,7 @@ public class Cellule {
 
     /**
      * Indique si la cellule a été touchée par un missile ou non
-     * @return boolean
+     * @return boolean à true si elle a été touchée ou false sinon
      */
     public boolean estVisitee(){
         return estVisitee;
@@ -38,7 +41,7 @@ public class Cellule {
 
     /**
      * Indique si la cellule contient un bateau ou non
-     * @return boolean
+     * @return boolean à true si elle contient un bateau ou false sinon
      */
     public boolean faitPartieBateau(){
         return navire != null;
@@ -54,28 +57,48 @@ public class Cellule {
 
     /**
      * Indique si la cellule contient un bateau touché
-     * @return boolean
+     * @return boolean à true si elle contient un bateau touché, ou false sinon
      */
     public boolean estTouchee(){
         return faitPartieBateau() && estVisitee();
     }
 
+    /**
+     * Indique si la cellule contient un bateau coulé
+     * @return booleen à true si elle contient un bateau coulé, ou false sinon
+     */
     public boolean estCoulee(){
         return navire.estCoule();
     }
 
+    /***
+     * Permet de retourner la position de la cellule
+     * @return Retourne la position de la cellule
+     */
     public Pair<Integer, Integer> getPositions() {
         return positions;
     }
 
+    /**
+     * Permet de mettre à jour la position de la cellule
+     * @param positions Nouvelle position de la cellule
+     */
     public void setPositions(Pair<Integer, Integer> positions) {
         this.positions = positions;
     }
 
+    /**
+     * Permet de retourner le navire qui se trouve au niveau de la cellule
+     * @return Retourne le navire qui se trouve au niveau de la cellule
+     */
     public Bateau getNavire() {
         return navire;
     }
 
+    /**
+     * Permet de mettre à jour le navire qui se trouve au niveau de la cellule
+     * @param navire Nouveau navire qui se trouve au niveau de la cellule
+     */
     public void setNavire(Bateau navire) {
         this.navire = navire;
     }

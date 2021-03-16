@@ -40,7 +40,7 @@ public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHol
     @Override
     public void onBindViewHolder(@NonNull MonViewHolderHistorique holder, int position) {
         partie = historique.get(position);
-        holder.getLeTextViewHistorique().setText( partie.getjGagnant().getPseudo() + " a gagné " +  partie.getjPerdant().getPseudo() + " en détruisant " + partie.getjGagnant().getScore() +" de ses bateaux contre " + partie.getjPerdant().getScore());
+        holder.getLeTextViewHistorique().setText( partie.getjGagnant().getPseudo() + " a gagné face à " +  partie.getjPerdant().getPseudo() + " en détruisant " + partie.getjGagnant().getScore() +" de ses bateaux contre " + partie.getjPerdant().getScore());
     // pour le moment on concatène comme ça après on mettra en ressource string
     }
 

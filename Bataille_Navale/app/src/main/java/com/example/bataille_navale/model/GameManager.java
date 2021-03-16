@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Classe qui permet de définir le gamemanger
+ */
 public class GameManager {
 
     private static GameManager instanceUnique;
@@ -137,57 +140,114 @@ public class GameManager {
         return false;
     }
 
+    /**
+     * Permet de retourner le joueur en cours
+     * @return Retourne le joueur en cours
+     */
     public Joueur getJoueurEnCours() {
         return joueurEnCours;
     }
 
+    /**
+     * Permet de mettre à jour le joueur en cours
+     * @param joueurEnCours Nouveau joueur en cours
+     */
     public void setJoueurEnCours(Joueur joueurEnCours) {
         this.joueurEnCours = joueurEnCours;
     }
 
+    /**
+     * Permet de retourner le joueur 1
+     * @return Retourne le joueur 1
+     */
     public Joueur getJ1() {
         return j1;
     }
 
+    /**
+     * Permet de mettre à jour le joueur 1
+     * @param j1 Nouveau joueur 1
+     */
     public void setJ1(Joueur j1) {
         this.j1 = j1;
     }
 
+    /**
+     * Permet de retourner le joueur 2
+     * @return Retourne le joueur 2
+     */
     public Joueur getJ2() {
         return j2;
     }
 
+    /**
+     * Permet de mettre à jour le joueur 2
+     * @param j2 Nouveau joueur 2
+     */
     public void setJ2(Joueur j2) {
         this.j2 = j2;
     }
 
+    /**
+     * Permet de retourner si le joueur en cours à touché un bateau
+     * @return Retourne true si le joueur en cours à touché un bateau, ou false sinon
+     */
     public boolean getaTouche() {
         return aTouche;
     }
 
+    /**
+     * Permet de mettre à jour si le joueur en cours à touché un bateau
+     * @param aTouche Nouvelle valeur de la variable qui contient si le joueur en cours à touché un bateau
+     */
     public void setaTouche(boolean aTouche) {
         this.aTouche = aTouche;
     }
 
+    /**
+     * Permet de retourner si le joueur a joué
+     * @return Retourne truc si le joueur a joué, ou false sinon
+     */
     public boolean getajoue() {
         return ajoue;
     }
 
+    /**
+     * Permet de mettre à jour si le joueur a joué
+     * @param ajoue Nouvelle valeur de la variable qui permet de savoir si le joueur a joué
+     */
     public void setAjoue(boolean ajoue) {
         this.ajoue = ajoue;
     }
+
+    /**
+     * Permet de retourner l'historique
+     * @return Retourne l'historique
+     */
     public List<Partie> getHistorique() {
         return historique;
     }
 
+    /**
+     * Permet de mettre à jour l'historique
+     * @param historique Nouvelle valeur de l'historique
+     */
     public void setHistorique(List<Partie> historique) {
         this.historique = historique;
     }
 
+    /**
+     * Permet de retourner la partie en cours
+     * @return Retourne la partie en cours
+     */
     public Partie getPartieEnCours() {
         return partieEnCours;
     }
 
+    /**
+     * Permet de modifier la valeur de la partie en cours
+     * @param partieEnCours Nouvelle valeur de la partie en cours
+     */
     public void setPartieEnCours(Partie partieEnCours) {
         this.partieEnCours = partieEnCours;
     }

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import static com.example.bataille_navale.model.Orientation.HORIZONTAL;
 
+/**
+ * Classe qui permet de définir les plateaux
+ */
 public class Plateau {
 
     /*--- définition des attributs du plateau ---*/
@@ -172,6 +175,10 @@ public class Plateau {
         }
     }
 
+    /**
+     * Permet de retourner le nombre de bateaux qui ont été coulés
+     * @return Retourne le nombre de bateaux qui ont été coulés
+     */
     public int nombreBateauxCoules(){
         int i = 0;
         for (Bateau bat:navires) {
@@ -208,10 +215,18 @@ public class Plateau {
         return retour;
     }
 
+    /**
+     * Permet de retourner les navires
+     * @return Retourne les navires
+     */
     public ArrayList<Bateau> getNavires() {
         return navires;
     }
 
+    /**
+     * Permet de retourner la grille
+     * @return Retourne la grille
+     */
     public ArrayList<Cellule> getGrille() {
         return grille;
     }

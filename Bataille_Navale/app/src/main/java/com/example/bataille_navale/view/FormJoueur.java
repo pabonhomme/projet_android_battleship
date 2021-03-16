@@ -29,7 +29,6 @@ public class FormJoueur extends AppCompatActivity {
     private Button boutonPhoto = null;
     private ImageView imageJoueur = null;
 
-    private static final int REQUEST_ID_READ_WRITE_PERMISSION = 99;
     private static final int REQUEST_ID_IMAGE_CAPTURE = 100;
 
     @Override
@@ -84,6 +83,9 @@ public class FormJoueur extends AppCompatActivity {
 
     }
 
+    /**
+     * Permet de prendre une image en photo
+     */
     private void captureImage() {
         // On crée un intent pour la caméra
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -92,7 +94,7 @@ public class FormJoueur extends AppCompatActivity {
         this.startActivityForResult(intent, REQUEST_ID_IMAGE_CAPTURE);
     }
 
-    // When results returned
+    // Qaund les résultats sont retournés
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -100,20 +102,6 @@ public class FormJoueur extends AppCompatActivity {
         if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
             if (resultCode == RESULT_OK) {
                 Bitmap bp = (Bitmap) data.getExtras().get("data");
-//                ecrire
-//                File photos = new File(getApplicationContext().getFilesDir(), "photos");
-//                File file = new File(photos, "toto.png");
-//
-//                FileOutputStream fos = null;
-//                try {
-//                    fos = new FileOutputStream(file);
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
-//                bp.compress(Bitmap.CompressFormat.JPEG, 75, fos);
-//
-////                lire
-//                Bitmap bp2 = BitmapFactory.decodeFile(file.getAbsolutePath());
 
                 gmanager.getJoueurEnCours().setImageJoueur(bp);
                 this.imageJoueur.setImageBitmap(bp);
@@ -124,63 +112,6 @@ public class FormJoueur extends AppCompatActivity {
             }
         }
     }
-
-
-//    private void permissionPhoto() {
-//
-//        // With Android Level >= 23, you have to ask the user
-//        // for permission to read/write data on the device.
-//        if (android.os.Build.VERSION.SDK_INT >= 23) {
-//
-//            // Check if we have read/write permission
-//            int readPermission = ActivityCompat.checkSelfPermission(this,
-//                    Manifest.permission.READ_EXTERNAL_STORAGE);
-//            int writePermission = ActivityCompat.checkSelfPermission(this,
-//                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//
-//            if (writePermission != PackageManager.PERMISSION_GRANTED ||
-//                    readPermission != PackageManager.PERMISSION_GRANTED) {
-//                // If don't have permission so prompt the user.
-//                this.requestPermissions(
-//                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                                Manifest.permission.READ_EXTERNAL_STORAGE},
-//                        REQUEST_ID_READ_WRITE_PERMISSION
-//                );
-//                return;
-//            }
-//        }
-//        this.captureImage();
-//    }
-//
-////     When you have the request results
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           String permissions[], int[] grantResults) {
-//
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        //
-//        switch (requestCode) {
-//            case REQUEST_ID_READ_WRITE_PERMISSION: {
-//
-//                // Note: If request is cancelled, the result arrays are empty.
-//                // Permissions granted (read/write).
-//                if (grantResults.length > 1
-//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
-//                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-//
-//                    Toast.makeText(this, "Permission accordée!", Toast.LENGTH_LONG).show();
-//
-//                    this.captureImage();
-//
-//                }
-//                // Cancelled or denied.
-//                else {
-//                    Toast.makeText(this, "Permission refusée!", Toast.LENGTH_LONG).show();
-//                }
-//                break;
-//            }
-//        }
-//    }
 
     @Override
     protected void onPause() {
