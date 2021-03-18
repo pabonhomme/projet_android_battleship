@@ -5,6 +5,13 @@
     android:orientation="vertical"
     android:layout_gravity="center">
 
+    <TextView
+        android:id="@+id/jamais_joue_historique"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Vous n'avez encore jamais joué, votre historique est vide"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -39,25 +39,12 @@ public class Joueur implements Comparable<Joueur>, Serializable {
         setScore(score);
     }
 
-//    private void writeObject(ObjectOutputStream stream){
-//        try {
-//            stream.defaultWriteObject();
-//            stream.writeUTF(getPseudo());
-//            stream.writeInt(getScore());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void readObject(ObjectInputStream stream){
-//        initialisation();
-//        try {
-//            setPseudo(stream.readUTF());
-//            setScore(stream.readInt());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    /**
+     * Permet d'augmenter le le score d'un joueur
+     */
+    public void incrementerScore(){
+        score++;
+    }
 
     /**
      * Permet d'initialiser le pseudo et le score du joueur

@@ -46,7 +46,7 @@
     <string name="erreur_bateau_touche_rejouer">Vous avez touché un bateau, vous pouvez rejouer</string>
     <string name="erreur_pas_joue">Vous n\'avez pas encore joué, il faut tirer sur une case</string>
     <string name="quitter_jeu">Quitter</string>
-    <string name="declare_forfait">Lâche ! Vous venez de déclarer forfait</string>
+    <string name="declare_forfait">Vous êtes un lâche matelos! Vous venez d\'abandonner la flotte.</string>
 
     <string name="pseudo_gagnant" formatted="false">Le gagnant est %s!</string>
     <string name="pseudo_plateau_gagnant" formatted="false">Plateau de %s:</string>

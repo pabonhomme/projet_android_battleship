@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Classe qui permet de définir le gamemanger
@@ -22,9 +23,11 @@ public class GameManager {
     private Joueur j2;
     private Joueur joueurEnCours;
     private boolean aTouche;
-    private boolean ajoue;
+    private boolean aJoue;
     private Partie partieEnCours;
     private List<Partie> historique = new ArrayList<>();
+
+    public static final String NAME_FILE = "historique_parties";
 
     /**
      * constructeur de manager
@@ -134,10 +137,20 @@ public class GameManager {
             else{
                 partieEnCours.setjPerdant(j1);
             }
+            partieEnCours.mettreScoreAJour();
             historique.add(partieEnCours);
             return true;
         }
         return false;
+    }
+
+    public void suppressionPartiehistorique(UUID id) {
+        Partie partieASupp = null;
+        for (Partie partie:historique) {
+            if(partie.getId() == id)
+                partieASupp = partie;
+        }
+        historique.remove(partieASupp);
     }
 
     /**
@@ -208,16 +221,16 @@ public class GameManager {
      * Permet de retourner si le joueur a joué
      * @return Retourne truc si le joueur a joué, ou false sinon
      */
-    public boolean getajoue() {
-        return ajoue;
+    public boolean getaJoue() {
+        return aJoue;
     }
 
     /**
      * Permet de mettre à jour si le joueur a joué
-     * @param ajoue Nouvelle valeur de la variable qui permet de savoir si le joueur a joué
+     * @param aJoue Nouvelle valeur de la variable qui permet de savoir si le joueur a joué
      */
-    public void setAjoue(boolean ajoue) {
-        this.ajoue = ajoue;
+    public void setAjoue(boolean aJoue) {
+        this.aJoue = aJoue;
     }
 
     /**

@@ -40,7 +40,6 @@ public class Menu extends FragmentActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, HistoriqueParties.class);
                 startActivity(intent);
-                finish();
             }
         });
 

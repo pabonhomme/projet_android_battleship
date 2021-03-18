@@ -1,12 +1,14 @@
 package com.example.bataille_navale.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Classe qui permet de définir les parties
  */
 public class Partie implements Serializable {
 
+    private UUID id = UUID.randomUUID();
     private Joueur jGagnant;
     private Joueur jPerdant;
 
@@ -24,6 +26,38 @@ public class Partie implements Serializable {
     public Partie(Joueur jGagnant, Joueur jPerdant) {
         setjGagnant(jGagnant);
         setjPerdant(jPerdant);
+    }
+
+    /**
+     * Permet de mettre les scores de chaque joueur à jour
+     */
+    public void mettreScoreAJour(){
+        for (Bateau bat: jGagnant.getPlateauAdverse().getNavires()) {
+            if(bat.estCoule()){
+                jGagnant.incrementerScore();
+            }
+        }
+        for (Bateau bat: jPerdant.getPlateauAdverse().getNavires()) {
+            if(bat.estCoule()){
+                jGagnant.incrementerScore();
+            }
+        }
+    }
+
+    /**
+     * Permet de retourner l'id de la partie
+     * @return Retourne un UUID
+     */
+    public UUID getId() {
+        return id;
+    }
+
+    /**
+     * Permet de mettre à jour l'id de la partie
+     * @param id
+     */
+    private void setId(UUID id) {
+        this.id = id;
     }
 
     /**

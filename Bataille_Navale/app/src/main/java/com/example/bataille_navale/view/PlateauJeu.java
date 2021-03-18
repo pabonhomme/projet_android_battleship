@@ -35,8 +35,6 @@ public class PlateauJeu extends AppCompatActivity {
 
     AlphaAnimation animation = null;
 
-    public static final String NAME_FILE = "historique_parties";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +59,7 @@ public class PlateauJeu extends AppCompatActivity {
                 Cellule cell = (Cellule) gridAdapter.getItem(position);
 
 
-                if (!gmanager.getajoue() || gmanager.getaTouche()) {
+                if (!gmanager.getaJoue() || gmanager.getaTouche()) {
                     if (!cell.estVisitee()) {
                         cell.visite();
                         gmanager.setaTouche(cell.faitPartieBateau());
@@ -80,7 +78,7 @@ public class PlateauJeu extends AppCompatActivity {
 
                 if (gmanager.isPartieFinie()) {
                     try {
-                        gmanager.sauvegarderDonnees(openFileOutput(NAME_FILE, MODE_PRIVATE));
+                        gmanager.sauvegarderDonnees(openFileOutput(GameManager.NAME_FILE, MODE_PRIVATE));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -104,7 +102,7 @@ public class PlateauJeu extends AppCompatActivity {
 
         suivant_jeu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (gmanager.getajoue()) {
+                if (gmanager.getaJoue()) {
                     if (!gmanager.getaTouche()) {
                         gmanager.changementTour();
                         nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants

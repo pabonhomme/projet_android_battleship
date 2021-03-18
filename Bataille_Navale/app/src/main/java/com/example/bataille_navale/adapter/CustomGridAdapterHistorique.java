@@ -10,18 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.model.Partie;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 
 public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHolderHistorique> {
 
     private final List<Partie> historique;
+    private GridAdapterCallback callback;
     private Partie partie;
 
-    public CustomGridAdapterHistorique(List<Partie> historique){
+    public CustomGridAdapterHistorique(List<Partie> historique, GridAdapterCallback callback ){
         this.historique = historique;
+        this.callback = callback;
     }
 
     /**
@@ -40,12 +41,16 @@ public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHol
     @Override
     public void onBindViewHolder(@NonNull MonViewHolderHistorique holder, int position) {
         partie = historique.get(position);
-        holder.getLeTextViewHistorique().setText( partie.getjGagnant().getPseudo() + " a gagné face à " +  partie.getjPerdant().getPseudo() + " en détruisant " + partie.getjGagnant().getScore() +" de ses bateaux contre " + partie.getjPerdant().getScore());
-    // pour le moment on concatène comme ça après on mettra en ressource string
+        holder.bindView(partie, callback);
     }
 
     @Override
     public int getItemCount() {
         return historique.size();
+    }
+
+    public interface GridAdapterCallback {
+
+        void deletePartie(UUID id);
     }
 }

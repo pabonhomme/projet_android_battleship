@@ -17,7 +17,6 @@ public class Accueil extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
 
-    public static final String NAME_FILE = "historique_parties";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +27,12 @@ public class Accueil extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    gmanager.chargerDonnees(openFileInput(NAME_FILE));
+                    gmanager.chargerDonnees(openFileInput(GameManager.NAME_FILE));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 Intent intent = new Intent(Accueil.this, Menu.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
