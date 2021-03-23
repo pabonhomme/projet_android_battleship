@@ -3,14 +3,13 @@ package com.example.bataille_navale.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.bataille_navale.R;
-import com.example.bataille_navale.model.GameManager;
+import com.example.bataille_navale.manager.GameManager;
 
 public class Menu extends FragmentActivity {
 

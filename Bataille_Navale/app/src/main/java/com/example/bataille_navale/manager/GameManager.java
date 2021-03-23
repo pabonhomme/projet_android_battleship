@@ -1,5 +1,8 @@
-package com.example.bataille_navale.model;
+package com.example.bataille_navale.manager;
 
+import com.example.bataille_navale.model.Joueur;
+import com.example.bataille_navale.model.Partie;
+import com.example.bataille_navale.model.Plateau;
 import com.example.bataille_navale.sauveurs.Sauveur;
 import com.example.bataille_navale.sauveurs.ser.SauveurSer;
 import com.example.bataille_navale.sauveurs.stub.Stub;
@@ -7,7 +10,6 @@ import com.example.bataille_navale.sauveurs.stub.Stub;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 

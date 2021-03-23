@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterPlacement;
-import com.example.bataille_navale.model.GameManager;
+import com.example.bataille_navale.manager.GameManager;
 
 public class AffichageFinPartie extends AppCompatActivity {
 

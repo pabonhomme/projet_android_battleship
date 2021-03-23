@@ -17,18 +17,16 @@ import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterPlacement;
 import com.example.bataille_navale.model.Bateau;
 import com.example.bataille_navale.model.Cellule;
-import com.example.bataille_navale.model.GameManager;
+import com.example.bataille_navale.manager.GameManager;
 import com.example.bataille_navale.model.Orientation;
 
 public class PlacementBateau extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
 
-    private TextView nomJoueur_placement = null;
     private TextView bat_restant_placement = null;
     private TextView taille_bat_placement = null;
     private RadioGroup orientationGroup = null;
-    private Button suivant_placement = null;
     Orientation orientation = null;
 
     private int bateauPlace = 0;
@@ -39,11 +37,11 @@ public class PlacementBateau extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.placement_bateau);
 
-        nomJoueur_placement = findViewById(R.id.nomJoueur_placement);
+        TextView nomJoueur_placement = findViewById(R.id.nomJoueur_placement);
         bat_restant_placement = findViewById(R.id.bat_restant_placement);
         taille_bat_placement = findViewById(R.id.taille_bat_placement);
         orientationGroup = findViewById(R.id.orientation_placement);
-        suivant_placement = findViewById(R.id.suivant_placement);
+        Button suivant_placement = findViewById(R.id.suivant_placement);
 
         nomJoueur_placement.setText(getResources().getString(R.string.pseudo_placement, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
         bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
@@ -67,7 +65,7 @@ public class PlacementBateau extends AppCompatActivity {
                         bateauPlace++;
                         bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
                         if (bateauPlace == gmanager.getJoueurEnCours().getPlateau().NB_BATEAUX) { // on vérifie si on ne dépasse pas l'index maximal du tableau
-                            taille_bat_placement.setVisibility(View.INVISIBLE);
+                            taille_bat_placement.setText(R.string.cliquez_sur_suivent_placement);
                         } else {
                             taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, gmanager.getJoueurEnCours().getPlateau().TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
                         }

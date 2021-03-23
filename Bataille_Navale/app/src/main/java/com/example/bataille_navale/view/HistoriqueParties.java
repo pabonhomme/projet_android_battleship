@@ -1,9 +1,8 @@
 package com.example.bataille_navale.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.CustomGridAdapterHistorique;
-import com.example.bataille_navale.model.GameManager;
+import com.example.bataille_navale.manager.GameManager;
 
 import java.io.FileNotFoundException;
 import java.util.UUID;
@@ -20,7 +19,7 @@ import java.util.UUID;
 public class HistoriqueParties extends AppCompatActivity {
 
     GameManager gmanager = GameManager.getInstance();
-    Button bouton_retour_historique = null;
+    TextView jamais_joue_historique = null;
     CustomGridAdapterHistorique adapter;
 
     @Override
@@ -28,26 +27,28 @@ public class HistoriqueParties extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.historique_parties);
 
-        bouton_retour_historique = findViewById(R.id.bouton_retour_historique);
-
+        jamais_joue_historique = findViewById(R.id.jamais_joue_historique);
+        if(gmanager.getHistorique().size() != 0){
+            jamais_joue_historique.setVisibility(View.GONE);
+        }
         RecyclerView historiqueView = findViewById(R.id.historiques_parties);
-        gmanager.lancerPartie();
         historiqueView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CustomGridAdapterHistorique(gmanager.getHistorique(), new CustomGridAdapterHistorique.GridAdapterCallback() {
             @Override
             public void deletePartie(UUID id) {
                 gmanager.suppressionPartiehistorique(id);
+                try {
+                    gmanager.sauvegarderDonnees(openFileOutput(GameManager.NAME_FILE, MODE_PRIVATE));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                if(gmanager.getHistorique().size() == 0){
+                    jamais_joue_historique.setVisibility(View.VISIBLE);
+                }
                 adapter.notifyDataSetChanged();
             }
         });
         historiqueView.setAdapter( adapter);
-
-        bouton_retour_historique.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
 

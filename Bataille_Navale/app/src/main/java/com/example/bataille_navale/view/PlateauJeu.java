@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterJeu;
 import com.example.bataille_navale.model.Cellule;
-import com.example.bataille_navale.model.GameManager;
+import com.example.bataille_navale.manager.GameManager;
 
 import java.io.FileNotFoundException;
 

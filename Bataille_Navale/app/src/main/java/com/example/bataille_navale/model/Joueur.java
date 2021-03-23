@@ -46,14 +46,6 @@ public class Joueur implements Comparable<Joueur>, Serializable {
         score++;
     }
 
-    /**
-     * Permet d'initialiser le pseudo et le score du joueur
-     */
-    private void initialisation(){
-        setPseudo("");
-        setScore(0);
-    }
-
 
     /**
      * Test si le joueur a le meme pseudo qu'un joueur donné

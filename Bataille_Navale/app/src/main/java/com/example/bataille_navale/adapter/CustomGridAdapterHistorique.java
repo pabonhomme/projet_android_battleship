@@ -2,6 +2,7 @@ package com.example.bataille_navale.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,7 @@ import java.util.UUID;
 public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHolderHistorique> {
 
     private final List<Partie> historique;
-    private GridAdapterCallback callback;
-    private Partie partie;
+    private final GridAdapterCallback callback;
 
     public CustomGridAdapterHistorique(List<Partie> historique, GridAdapterCallback callback ){
         this.historique = historique;
@@ -34,13 +34,13 @@ public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHol
     @NonNull
     @Override
     public MonViewHolderHistorique onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LinearLayout leLayout = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.partie, parent, false );
+        GridLayout leLayout = (GridLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.partie, parent, false );
         return new MonViewHolderHistorique(leLayout);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MonViewHolderHistorique holder, int position) {
-        partie = historique.get(position);
+        Partie partie = historique.get(position);
         holder.bindView(partie, callback);
     }
 

@@ -11,11 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
-import com.example.bataille_navale.model.GameManager;
+import com.example.bataille_navale.manager.GameManager;
 
 public class FormJoueur extends AppCompatActivity {
 
@@ -42,6 +43,10 @@ public class FormJoueur extends AppCompatActivity {
         bouton_retour_form = findViewById(R.id.bouton_retour_form);
         boutonPhoto = findViewById(R.id.button_image);
         imageJoueur = findViewById(R.id.imageJoueur);
+
+        if(savedInstanceState!= null){
+            imageJoueur.setImageBitmap(savedInstanceState.getParcelable("imageJoueur"));
+        }
 
         bouton_suivant_form.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -83,6 +88,14 @@ public class FormJoueur extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        if(gmanager.getJoueurEnCours().getImageJoueur() != null){
+            outState.putParcelable("imageJoueur", gmanager.getJoueurEnCours().getImageJoueur());
+        }
+        super.onSaveInstanceState(outState);
+    }
+
     /**
      * Permet de prendre une image en photo
      */
@@ -94,7 +107,13 @@ public class FormJoueur extends AppCompatActivity {
         this.startActivityForResult(intent, REQUEST_ID_IMAGE_CAPTURE);
     }
 
-    // Qaund les résultats sont retournés
+    /**
+     * Quand les résultats sont retournés
+     *
+     * @param requestCode int
+     * @param resultCode  int
+     * @param data        int
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -112,6 +131,8 @@ public class FormJoueur extends AppCompatActivity {
             }
         }
     }
+
+
 
     @Override
     protected void onPause() {
