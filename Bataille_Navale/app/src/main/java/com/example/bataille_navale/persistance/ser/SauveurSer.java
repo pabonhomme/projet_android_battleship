@@ -1,8 +1,7 @@
-package com.example.bataille_navale.sauveurs.ser;
+package com.example.bataille_navale.persistance.ser;
 
-import com.example.bataille_navale.model.Joueur;
 import com.example.bataille_navale.model.Partie;
-import com.example.bataille_navale.sauveurs.Sauveur;
+import com.example.bataille_navale.persistance.Sauveur;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -21,7 +19,8 @@ public class SauveurSer extends Sauveur {
 
     /**
      * Sauvegarde une collection de Partie
-     * @param historique  La collection a sauvegarder
+     *
+     * @param historique La collection a sauvegarder
      */
     @Override
     public void sauvegarderStats(List<Partie> historique, FileOutputStream file) {
@@ -30,7 +29,8 @@ public class SauveurSer extends Sauveur {
 
     /**
      * Charge une collection de Partie
-     * @return  La collection de Partie
+     *
+     * @return La collection de Partie
      */
     @Override
     public List<Partie> chargerStats(FileInputStream file) {
@@ -40,6 +40,7 @@ public class SauveurSer extends Sauveur {
 
     /**
      * sérialise la liste de Partie
+     *
      * @param historique Collection<Joueur>
      */
     private void serialiser(List<Partie> historique, FileOutputStream file) {
@@ -55,6 +56,7 @@ public class SauveurSer extends Sauveur {
 
     /**
      * désérialise la liste de Partie
+     *
      * @return List<Partie>
      */
     private List<Partie> deserialiser(FileInputStream file) {

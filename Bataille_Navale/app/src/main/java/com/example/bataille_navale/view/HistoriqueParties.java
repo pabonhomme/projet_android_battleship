@@ -18,7 +18,7 @@ import java.util.UUID;
 
 public class HistoriqueParties extends AppCompatActivity {
 
-    GameManager gmanager = GameManager.getInstance();
+    private final GameManager gmanager = GameManager.getInstance();
     TextView jamais_joue_historique = null;
     CustomGridAdapterHistorique adapter;
 
@@ -28,7 +28,7 @@ public class HistoriqueParties extends AppCompatActivity {
         setContentView(R.layout.historique_parties);
 
         jamais_joue_historique = findViewById(R.id.jamais_joue_historique);
-        if(gmanager.getHistorique().size() != 0){
+        if (gmanager.getHistorique().size() != 0) {
             jamais_joue_historique.setVisibility(View.GONE);
         }
         RecyclerView historiqueView = findViewById(R.id.historiques_parties);
@@ -36,19 +36,19 @@ public class HistoriqueParties extends AppCompatActivity {
         adapter = new CustomGridAdapterHistorique(gmanager.getHistorique(), new CustomGridAdapterHistorique.GridAdapterCallback() {
             @Override
             public void deletePartie(UUID id) {
-                gmanager.suppressionPartiehistorique(id);
+                gmanager.suppressionPartieHistorique(id);
                 try {
                     gmanager.sauvegarderDonnees(openFileOutput(GameManager.NAME_FILE, MODE_PRIVATE));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-                if(gmanager.getHistorique().size() == 0){
+                if (gmanager.getHistorique().size() == 0) {
                     jamais_joue_historique.setVisibility(View.VISIBLE);
                 }
                 adapter.notifyDataSetChanged();
             }
         });
-        historiqueView.setAdapter( adapter);
+        historiqueView.setAdapter(adapter);
     }
 
 

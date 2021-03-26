@@ -3,7 +3,6 @@ package com.example.bataille_navale.adapter;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,21 +19,22 @@ public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHol
     private final List<Partie> historique;
     private final GridAdapterCallback callback;
 
-    public CustomGridAdapterHistorique(List<Partie> historique, GridAdapterCallback callback ){
+    public CustomGridAdapterHistorique(List<Partie> historique, GridAdapterCallback callback) {
         this.historique = historique;
         this.callback = callback;
     }
 
     /**
      * Parse la celulle et crée le holder (contenant) qui va contenir la celulle
-     * @param parent parent qui va contenir la cellule
+     *
+     * @param parent   parent qui va contenir la cellule
      * @param viewType type de vue
      * @return ViewHolder
      */
     @NonNull
     @Override
     public MonViewHolderHistorique onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        GridLayout leLayout = (GridLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.partie, parent, false );
+        GridLayout leLayout = (GridLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.partie, parent, false);
         return new MonViewHolderHistorique(leLayout);
     }
 

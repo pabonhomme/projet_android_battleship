@@ -57,6 +57,9 @@
 
     <string name="pseudo_gagnant" formatted="false">Le gagnant est %s !</string>
     <string name="pseudo_plateau_gagnant" formatted="false">Plateau de %s :</string>
+    <string name="imagejoueur_fin_partie">imageJoueur</string>
 
+    <string name="voici_l_historique_de_toutes_vos_parties">Voici l\'historique de toutes vos parties</string>
+    <string name="il_n_y_a_aucune_partie_enregistre">Il n\'y a aucune partie enregistrée. Jouez pour retrouvez tous vos scores !</string>
 
 </resources>

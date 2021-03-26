@@ -15,18 +15,19 @@ public class Bateau {
     /**
      * constructeur de Bateau
      */
-    public Bateau(int taille){
+    public Bateau(int taille) {
         setTaille(taille);
     }
 
     /**
      * Constructeur de Bateau
-     * @param ligne Ligne du bateau
-     * @param colonne Colonne du bateau
+     *
+     * @param ligne     Ligne du bateau
+     * @param colonne   Colonne du bateau
      * @param direction Direction du bateau
-     * @param taille Taille (nombre de cases) du bateau
+     * @param taille    Taille (nombre de cases) du bateau
      */
-    public Bateau(int ligne, int colonne, Orientation direction, int taille){
+    public Bateau(int ligne, int colonne, Orientation direction, int taille) {
         setPositions(new Pair<>(ligne, colonne));
         setDirection(direction);
         setTaille(taille);
@@ -34,23 +35,25 @@ public class Bateau {
 
     /**
      * Permet de savoir si le bateau est coulée
+     *
      * @return boolean si il est coulé
      */
-    public boolean estCoule(){
+    public boolean estCoule() {
         return cellTouchees == taille;
     }
 
     /**
      * Ajout une partie du bateau touchée au compteur
      */
-    public void addCellTouchee(){
-        if(cellTouchees <taille){
+    public void addCellTouchee() {
+        if (cellTouchees < taille) {
             cellTouchees++;
         }
     }
 
     /**
      * Permet de retourner la taille du bateau
+     *
      * @return Retourne la taille du bateau
      */
     public int getTaille() {
@@ -59,6 +62,7 @@ public class Bateau {
 
     /**
      * Permet de mettre à jour la taille du bateau
+     *
      * @param taille Nouvelle taille du bateau
      */
     public void setTaille(int taille) {
@@ -67,6 +71,7 @@ public class Bateau {
 
     /**
      * Permet de retourner la direction du bateau
+     *
      * @return Retourne la direction du bateau
      */
     public Orientation getDirection() {
@@ -75,6 +80,7 @@ public class Bateau {
 
     /**
      * Permet de mettre à jour la direction du bateau
+     *
      * @param direction Nouvelle direction du bateau
      */
     public void setDirection(Orientation direction) {
@@ -83,6 +89,7 @@ public class Bateau {
 
     /**
      * Permet de retourner la position du bateau
+     *
      * @return Retourne la position du bateau
      */
     public Pair<Integer, Integer> getPositions() {
@@ -91,6 +98,7 @@ public class Bateau {
 
     /**
      * Permet de mettre à jour la position du bateau
+     *
      * @param positions Nouvelle position du bateau
      */
     public void setPositions(Pair<Integer, Integer> positions) {

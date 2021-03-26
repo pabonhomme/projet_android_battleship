@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -30,10 +31,10 @@
             android:layout_marginTop="150dp"
             android:gravity="center"
             android:hint="@string/pseudo_kouyk4_form"
-            android:textAlignment="center"
-            android:singleLine="true"
-            android:maxLength="15"
             android:inputType="textCapSentences"
+            android:maxLength="15"
+            android:singleLine="true"
+            android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@id/cardViewimageJoueur"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,16 +53,16 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                app:cardCornerRadius="150dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                app:cardCornerRadius="150dp">
 
                 <ImageView
                     android:id="@+id/imageJoueur"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/photo_de_profil_du_joueur_form"
                     android:gravity="center"
-                    tools:ignore="VectorDrawableCompat"
-                    android:contentDescription="@string/photo_de_profil_du_joueur_form" />
+                    tools:ignore="VectorDrawableCompat" />
             </androidx.cardview.widget.CardView>
         </androidx.cardview.widget.CardView>
 
@@ -83,8 +84,8 @@
             android:layout_marginEnd="25dp"
             android:layout_marginRight="25dp"
             android:text="@string/retour"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/button_image"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_image" />
 
         <Button
@@ -94,8 +95,8 @@
             android:layout_marginStart="25dp"
             android:layout_marginLeft="25dp"
             android:text="@string/suivant_bouton"
-            app:layout_constraintStart_toStartOf="@id/button_image"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/button_image"
             app:layout_constraintTop_toTopOf="@id/bouton_retour_form" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

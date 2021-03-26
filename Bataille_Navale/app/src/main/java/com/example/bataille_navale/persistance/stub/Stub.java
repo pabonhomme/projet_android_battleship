@@ -1,13 +1,12 @@
-package com.example.bataille_navale.sauveurs.stub;
+package com.example.bataille_navale.persistance.stub;
 
 import com.example.bataille_navale.model.Joueur;
 import com.example.bataille_navale.model.Partie;
-import com.example.bataille_navale.sauveurs.Sauveur;
+import com.example.bataille_navale.persistance.Sauveur;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,7 +16,8 @@ public class Stub extends Sauveur {
 
     /**
      * Simule la sauvegarde d'une collection de joueur
-     * @param lesJoueurs  La collection a sauvegarder
+     *
+     * @param lesJoueurs La collection a sauvegarder
      */
     @Override
     public void sauvegarderStats(List<Partie> lesJoueurs, FileOutputStream file) {
@@ -26,7 +26,8 @@ public class Stub extends Sauveur {
 
     /**
      * Charge une collection de joueur
-     * @return  La collection de joueur
+     *
+     * @return La collection de joueur
      */
     @Override
     public List<Partie> chargerStats(FileInputStream file) {

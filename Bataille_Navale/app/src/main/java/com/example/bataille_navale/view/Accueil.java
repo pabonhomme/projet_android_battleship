@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 
 public class Accueil extends AppCompatActivity {
 
-    GameManager gmanager = GameManager.getInstance();
+    private final GameManager gmanager = GameManager.getInstance();
 
 
     @Override
@@ -37,10 +37,10 @@ public class Accueil extends AppCompatActivity {
         });
     }
 
-     @Override
+    @Override
     protected void onPause() {
-         super.onPause();
-     }
+        super.onPause();
+    }
 
     @Override
     protected void onResume() {

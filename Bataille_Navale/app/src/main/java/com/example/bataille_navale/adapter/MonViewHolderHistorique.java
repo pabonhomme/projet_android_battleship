@@ -21,15 +21,15 @@ public class MonViewHolderHistorique extends RecyclerView.ViewHolder {
         supprimer_partie = itemView.findViewById(R.id.supprimer_partie);
     }
 
-    void bindView(Partie partie, CustomGridAdapterHistorique.GridAdapterCallback callback){
-        leTextViewHistorique.setText( partie.getjGagnant().getPseudo() + " a gagné face à " +  partie.getjPerdant().getPseudo() + " en détruisant " + partie.getjGagnant().getScore() +" de ses bateaux contre " + partie.getjPerdant().getScore());
+    void bindView(Partie partie, CustomGridAdapterHistorique.GridAdapterCallback callback) {
+        leTextViewHistorique.setText(partie.getjGagnant().getPseudo() + " a gagné face à " + partie.getjPerdant().getPseudo() + " en détruisant " + partie.getjGagnant().getScore() + " de ses bateaux contre " + partie.getjPerdant().getScore());
 
         // Set listener
-        supprimer_partie.setOnClickListener(new View.OnClickListener(){
+        supprimer_partie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callback.deletePartie(partie.getId());
             }
-        } );
+        });
     }
 }

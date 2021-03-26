@@ -20,6 +20,7 @@ public class Partie implements Serializable {
 
     /**
      * Constructeur d'une partie en fonction d'un joueur gagnant et d'un joueur perdant
+     *
      * @param jGagnant Joueur qui a gagné
      * @param jPerdant Joueur qui a perdu
      */
@@ -31,14 +32,14 @@ public class Partie implements Serializable {
     /**
      * Permet de mettre les scores de chaque joueur à jour
      */
-    public void mettreScoreAJour(){
-        for (Bateau bat: jGagnant.getPlateauAdverse().getNavires()) {
-            if(bat.estCoule()){
+    public void mettreScoreAJour() {
+        for (Bateau bat : jGagnant.getPlateauAdverse().getNavires()) {
+            if (bat.estCoule()) {
                 jGagnant.incrementerScore();
             }
         }
-        for (Bateau bat: jPerdant.getPlateauAdverse().getNavires()) {
-            if(bat.estCoule()){
+        for (Bateau bat : jPerdant.getPlateauAdverse().getNavires()) {
+            if (bat.estCoule()) {
                 jGagnant.incrementerScore();
             }
         }
@@ -46,6 +47,7 @@ public class Partie implements Serializable {
 
     /**
      * Permet de retourner l'id de la partie
+     *
      * @return Retourne un UUID
      */
     public UUID getId() {
@@ -54,7 +56,8 @@ public class Partie implements Serializable {
 
     /**
      * Permet de mettre à jour l'id de la partie
-     * @param id
+     *
+     * @param id UUID
      */
     private void setId(UUID id) {
         this.id = id;
@@ -62,6 +65,7 @@ public class Partie implements Serializable {
 
     /**
      * Permet de retourner le joueur qui a gagné
+     *
      * @return Retourne le joueur qui a gagné
      */
     public Joueur getjGagnant() {
@@ -70,6 +74,7 @@ public class Partie implements Serializable {
 
     /**
      * Permet de mettre à jour le joueur qui a gagné
+     *
      * @param jGagnant Nouvelle valeur du joueur qui a gagné
      */
     public void setjGagnant(Joueur jGagnant) {
@@ -78,6 +83,7 @@ public class Partie implements Serializable {
 
     /**
      * Permet de retourner le joueur qui a perdu
+     *
      * @return Retourne le joueur qui a perdu
      */
     public Joueur getjPerdant() {
@@ -86,6 +92,7 @@ public class Partie implements Serializable {
 
     /**
      * Permet de mettre à jour le joueur qui a perdu
+     *
      * @param jPerdant Nouvelle valeur du joueur qui a perdu
      */
     public void setjPerdant(Joueur jPerdant) {

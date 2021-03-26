@@ -1,5 +1,6 @@
 package com.example.bataille_navale.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import com.example.bataille_navale.manager.GameManager;
 
 public class FormJoueur extends AppCompatActivity {
 
-    GameManager gmanager = GameManager.getInstance();
+    private final GameManager gmanager = GameManager.getInstance();
 
     private TextView inserez_pseudo_text = null;
     private EditText pseudo_joueur_form = null;
@@ -29,6 +30,7 @@ public class FormJoueur extends AppCompatActivity {
 
     private static final int REQUEST_ID_IMAGE_CAPTURE = 100;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +45,16 @@ public class FormJoueur extends AppCompatActivity {
 
         imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.image_joueur_base));
 
-        if(savedInstanceState!= null){
-            if(savedInstanceState.getParcelable("imageJoueur") != null){
+        if (savedInstanceState != null) {
+            if (savedInstanceState.getParcelable("imageJoueur") != null) {
                 imageJoueur.setImageBitmap(savedInstanceState.getParcelable("imageJoueur"));
-            }
-            else{
+            } else {
                 imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.image_joueur_base));
             }
         }
 
         bouton_suivant_form.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
             public void onClick(View view) {
                 if (!pseudo_joueur_form.getText().toString().equals("")) {
                     if (gmanager.getJoueurEnCours() == gmanager.getJ1()) {
@@ -94,7 +96,7 @@ public class FormJoueur extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        if(gmanager.getJoueurEnCours().getImageJoueur() != null){
+        if (gmanager.getJoueurEnCours().getImageJoueur() != null) {
             outState.putParcelable("imageJoueur", gmanager.getJoueurEnCours().getImageJoueur());
         }
         super.onSaveInstanceState(outState);
@@ -135,7 +137,6 @@ public class FormJoueur extends AppCompatActivity {
             }
         }
     }
-
 
 
     @Override

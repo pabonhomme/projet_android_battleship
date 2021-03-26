@@ -19,6 +19,7 @@ public class MonViewHolderCellule extends RecyclerView.ViewHolder {
 
     /**
      * Permet de retourner le textView
+     *
      * @return Retourne le textView
      */
     public TextView getLeTextView() {

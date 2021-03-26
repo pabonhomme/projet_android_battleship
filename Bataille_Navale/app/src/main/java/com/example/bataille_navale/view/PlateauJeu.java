@@ -4,12 +4,9 @@ package com.example.bataille_navale.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
@@ -23,6 +20,7 @@ import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterJeu;
 import com.example.bataille_navale.model.Cellule;
 import com.example.bataille_navale.manager.GameManager;
+import com.example.bataille_navale.model.Plateau;
 
 import java.io.FileNotFoundException;
 
@@ -35,8 +33,6 @@ public class PlateauJeu extends AppCompatActivity {
     private Button suivant_jeu = null;
     private Button quitter_jeu = null;
 
-    AlphaAnimation animation = null;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +44,7 @@ public class PlateauJeu extends AppCompatActivity {
         quitter_jeu = findViewById(R.id.quitter_jeu);
 
         nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
-        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
+        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, Plateau.NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
 
         final GridView gridView = findViewById(R.id.gridView_jeu); // on récupère la grid
         final GridAdapterJeu gridAdapter = new GridAdapterJeu(this, gmanager.getJoueurEnCours().getPlateauAdverse().getGrille()); // on set l'adapter
@@ -66,7 +62,7 @@ public class PlateauJeu extends AppCompatActivity {
                         cell.visite();
                         gmanager.setaTouche(cell.faitPartieBateau());
                         gmanager.setAjoue(true);
-                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
+                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, Plateau.NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
                         gridAdapter.notifyDataSetChanged();
 
                     } else {
@@ -108,7 +104,7 @@ public class PlateauJeu extends AppCompatActivity {
                     if (!gmanager.getaTouche()) {
                         gmanager.changementTour();
                         nomJoueur_jeu.setText(getResources().getString(R.string.nomJoueur_jeu, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
-                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, gmanager.getJoueurEnCours().getPlateauAdverse().NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
+                        bat_restant_jeu.setText(getResources().getString(R.string.bat_restant_jeu, Plateau.NB_BATEAUX - gmanager.getJoueurEnCours().getPlateauAdverse().nombreBateauxCoules())); // set texte nb bateaux restants
                         gridAdapter.refreshData(gmanager.getJoueurEnCours().getPlateauAdverse().getGrille());
                     } else {
                         Toast.makeText(PlateauJeu.this, R.string.erreur_bateau_touche_rejouer,
@@ -152,20 +148,6 @@ public class PlateauJeu extends AppCompatActivity {
                         .show();
             }
         });
-    }
-
-    /**
-     * Change le fond de la cellule avec une animation
-     *
-     * @param leTextView Textview
-     * @param background Drawable background de la celulle
-     */
-    private void touchAnimation(TextView leTextView, Drawable background) {
-        animation = new AlphaAnimation(0, 1);
-        animation.setDuration(100);
-        animation.setInterpolator(new AccelerateInterpolator());
-        leTextView.startAnimation(animation);
-        leTextView.setBackground(background);
     }
 
     @Override

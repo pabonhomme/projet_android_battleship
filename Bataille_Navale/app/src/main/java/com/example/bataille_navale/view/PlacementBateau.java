@@ -23,12 +23,12 @@ import com.example.bataille_navale.model.Plateau;
 
 public class PlacementBateau extends AppCompatActivity {
 
-    GameManager gmanager = GameManager.getInstance();
+    private final GameManager gmanager = GameManager.getInstance();
 
     private TextView bat_restant_placement = null;
     private TextView taille_bat_placement = null;
     private RadioGroup orientationGroup = null;
-    Orientation orientation = null;
+    private Orientation orientation = null;
 
     private int bateauPlace = 0;
 

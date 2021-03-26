@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.manager.GameManager;
 
-public class Menu extends FragmentActivity {
+public class Menu extends AppCompatActivity {
 
-    private GameManager gmanager = GameManager.getInstance();
+    private final GameManager gmanager = GameManager.getInstance();
 
     Button button_menu_jouer = null;
     Button button_menu_historique = null;

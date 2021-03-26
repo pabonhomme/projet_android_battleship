@@ -19,23 +19,16 @@ public class AffichageFinPartie extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
 
-    private TextView nomJoueur_gagnant_finPartie = null;
-    private TextView pseudo_plateau_adverse_finPartie = null;
-    private Button rejouer_gagnant_finPartie = null;
-    private Button menu_gagnant_finPartie = null;
-
-    private ImageView imageGagnant_finPartie = null;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.affichage_fin_partie);
 
-        nomJoueur_gagnant_finPartie = findViewById(R.id.nomJoueur_gagnant_finPartie);
-        pseudo_plateau_adverse_finPartie = findViewById(R.id.pseudo_plateau_adverse_finPartie);
-        rejouer_gagnant_finPartie = findViewById(R.id.rejouer_gagnant_finPartie);
-        menu_gagnant_finPartie = findViewById(R.id.menu_gagnant_finPartie);
-        imageGagnant_finPartie = findViewById(R.id.imageGagnant_finPartie);
+        TextView nomJoueur_gagnant_finPartie = findViewById(R.id.nomJoueur_gagnant_finPartie);
+        TextView pseudo_plateau_adverse_finPartie = findViewById(R.id.pseudo_plateau_adverse_finPartie);
+        Button rejouer_gagnant_finPartie = findViewById(R.id.rejouer_gagnant_finPartie);
+        Button menu_gagnant_finPartie = findViewById(R.id.menu_gagnant_finPartie);
+        ImageView imageGagnant_finPartie = findViewById(R.id.imageGagnant_finPartie);
 
         nomJoueur_gagnant_finPartie.setText(getResources().getString(R.string.pseudo_gagnant, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
 

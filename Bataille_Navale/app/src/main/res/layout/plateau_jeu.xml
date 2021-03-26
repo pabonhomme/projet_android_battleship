@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/nomJoueur_jeu"
@@ -36,149 +36,164 @@
         android:id="@+id/coorTop_jeu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/gridView_jeu"
         app:layout_constraintEnd_toEndOf="@id/gridView_jeu"
         app:layout_constraintStart_toStartOf="@id/gridView_jeu"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/gridView_jeu">
+        app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_0"/>
+            android:text="@string/_0" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_1"/>
+            android:text="@string/_1" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_2"/>
+            android:text="@string/_2" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_3"/>
+            android:text="@string/_3" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_4"/>
+            android:text="@string/_4" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_5"/>
+            android:text="@string/_5" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_6"/>
+            android:text="@string/_6" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_7"/>
+            android:text="@string/_7" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_8"/>
+            android:text="@string/_8" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_9"/>
+            android:text="@string/_9" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/coorLeft_jeu"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toBottomOf="@id/gridView_jeu"
+        app:layout_constraintEnd_toStartOf="@id/gridView_jeu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gridView_jeu"
-        app:layout_constraintBottom_toBottomOf="@id/gridView_jeu"
-        app:layout_constraintEnd_toStartOf="@id/gridView_jeu">
+        app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_0"/>
+            android:text="@string/_0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_1"/>
+            android:text="@string/_1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_2"/>
+            android:text="@string/_2" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_3"/>
+            android:text="@string/_3" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_4"/>
+            android:text="@string/_4" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_5"/>
+            android:text="@string/_5" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_6"/>
+            android:text="@string/_6" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_7"/>
+            android:text="@string/_7" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_8"/>
+            android:text="@string/_8" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/_9"/>
+            android:text="@string/_9" />
 
     </LinearLayout>
 
@@ -190,17 +205,17 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@color/black"
+        android:clickable="false"
         android:horizontalSpacing="1dp"
         android:numColumns="10"
         android:verticalSpacing="1dp"
-        android:clickable="false"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="@id/coorLeft_jeu"
-        app:layout_constraintTop_toBottomOf="@id/coorTop_jeu" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coorTop_jeu"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/cache_jeu"
@@ -222,21 +237,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quitter_jeu"
-        app:layout_constraintStart_toStartOf="@id/gridView_jeu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/suivant_jeu"
-        app:layout_constraintTop_toBottomOf="@id/gridView_jeu"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/gridView_jeu"
+        app:layout_constraintTop_toBottomOf="@id/gridView_jeu" />
 
     <Button
         android:id="@+id/suivant_jeu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/suivant_bouton"
-        app:layout_constraintStart_toEndOf="@id/quitter_jeu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/gridView_jeu"
-        app:layout_constraintTop_toBottomOf="@id/gridView_jeu"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
+        app:layout_constraintStart_toEndOf="@id/quitter_jeu"
+        app:layout_constraintTop_toBottomOf="@id/gridView_jeu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

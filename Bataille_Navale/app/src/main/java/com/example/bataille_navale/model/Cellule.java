@@ -15,7 +15,7 @@ public class Cellule {
     /**
      * constructeur de Cellule
      */
-    public Cellule(Pair<Integer, Integer> positions){
+    public Cellule(Pair<Integer, Integer> positions) {
         navire = null;
         estVisitee = false;
         setPositions(positions);
@@ -23,51 +23,56 @@ public class Cellule {
 
     /**
      * Indique si la cellule a été touchée par un missile ou non
+     *
      * @return boolean à true si elle a été touchée ou false sinon
      */
-    public boolean estVisitee(){
+    public boolean estVisitee() {
         return estVisitee;
     }
 
     /**
      * Permet de positionner l'attribut estVisité à true pour indiquer que la cellule a été touchée par un missile
      */
-    public void visite(){
+    public void visite() {
         estVisitee = true;
-        if(faitPartieBateau()){
+        if (faitPartieBateau()) {
             navire.addCellTouchee();
         }
     }
 
     /**
      * Indique si la cellule contient un bateau ou non
+     *
      * @return boolean à true si elle contient un bateau ou false sinon
      */
-    public boolean faitPartieBateau(){
+    public boolean faitPartieBateau() {
         return navire != null;
     }
 
     /**
      * Permet de placer un bateau dans cette cellule
+     *
      * @param b Bateau
      */
-    public void mettreBateau(Bateau b){
+    public void mettreBateau(Bateau b) {
         navire = b;
     }
 
     /**
      * Indique si la cellule contient un bateau touché
+     *
      * @return boolean à true si elle contient un bateau touché, ou false sinon
      */
-    public boolean estTouchee(){
+    public boolean estTouchee() {
         return faitPartieBateau() && estVisitee();
     }
 
     /**
      * Indique si la cellule contient un bateau coulé
+     *
      * @return booleen à true si elle contient un bateau coulé, ou false sinon
      */
-    public boolean estCoulee(){
+    public boolean estCoulee() {
         return navire.estCoule();
     }
 
@@ -81,6 +86,7 @@ public class Cellule {
 
     /**
      * Permet de mettre à jour la position de la cellule
+     *
      * @param positions Nouvelle position de la cellule
      */
     public void setPositions(Pair<Integer, Integer> positions) {
@@ -89,6 +95,7 @@ public class Cellule {
 
     /**
      * Permet de retourner le navire qui se trouve au niveau de la cellule
+     *
      * @return Retourne le navire qui se trouve au niveau de la cellule
      */
     public Bateau getNavire() {
@@ -97,6 +104,7 @@ public class Cellule {
 
     /**
      * Permet de mettre à jour le navire qui se trouve au niveau de la cellule
+     *
      * @param navire Nouveau navire qui se trouve au niveau de la cellule
      */
     public void setNavire(Bateau navire) {
@@ -106,9 +114,8 @@ public class Cellule {
     @NonNull
     @Override
     public String toString() {
-        if(!estVisitee()){
+        if (!estVisitee()) {
             return "";
-        }
-        else return "X";
+        } else return "X";
     }
 }

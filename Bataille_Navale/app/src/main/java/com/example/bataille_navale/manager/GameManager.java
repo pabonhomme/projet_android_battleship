@@ -3,9 +3,8 @@ package com.example.bataille_navale.manager;
 import com.example.bataille_navale.model.Joueur;
 import com.example.bataille_navale.model.Partie;
 import com.example.bataille_navale.model.Plateau;
-import com.example.bataille_navale.sauveurs.Sauveur;
-import com.example.bataille_navale.sauveurs.ser.SauveurSer;
-import com.example.bataille_navale.sauveurs.stub.Stub;
+import com.example.bataille_navale.persistance.Sauveur;
+import com.example.bataille_navale.persistance.ser.SauveurSer;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -145,7 +144,7 @@ public class GameManager {
         return false;
     }
 
-    public void suppressionPartiehistorique(UUID id) {
+    public void suppressionPartieHistorique(UUID id) {
         Partie partieASupp = null;
         for (Partie partie:historique) {
             if(partie.getId() == id)

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/menu_jouer"
@@ -18,18 +18,18 @@
         android:id="@+id/menu_historique"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        app:backgroundTint="#0048FF"
         android:layout_marginTop="35dp"
-        android:text="@string/historique_menu"/>
+        android:gravity="center"
+        android:text="@string/historique_menu"
+        app:backgroundTint="#0048FF" />
 
     <Button
         android:id="@+id/menu_retour"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        app:backgroundTint="#0048FF"
         android:layout_marginTop="35dp"
-        android:text="@string/retour"/>
+        android:gravity="center"
+        android:text="@string/retour"
+        app:backgroundTint="#0048FF" />
 
 </LinearLayout>
