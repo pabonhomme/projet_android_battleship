@@ -18,31 +18,67 @@ public class GridAdapterJeu extends BaseAdapter {
     private ArrayList<Cellule> listeCell;
     private final LayoutInflater layoutInflater;
 
+    /**
+     * Constructeur
+     *
+     * @param aContext  Context
+     * @param listeCell ArrayList<Cellule>
+     */
     public GridAdapterJeu(Context aContext, ArrayList<Cellule> listeCell) {
         this.listeCell = listeCell;
         layoutInflater = LayoutInflater.from(aContext);
     }
 
+    /**
+     * récupère le nombre de cellule
+     *
+     * @return int
+     */
     @Override
     public int getCount() {
         return listeCell.size();
     }
 
+    /**
+     * récupère un item à partie d'une position
+     *
+     * @param position int
+     * @return Object
+     */
     @Override
     public Object getItem(int position) {
         return listeCell.get(position);
     }
 
+    /**
+     * Récupère l'item d'un id
+     *
+     * @param position int
+     * @return long
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Permet de mettre à jour la liste de cellule quand on change d'adversaire
+     *
+     * @param data ArrayList<Cellule>
+     */
     public void refreshData(ArrayList<Cellule> data) {
         this.listeCell = data;
         this.notifyDataSetChanged();
     }
 
+    /**
+     * Permet de récupérer la vue à afficher
+     *
+     * @param position    int
+     * @param convertView View
+     * @param parent      ViewGroup
+     * @return View
+     */
     @SuppressLint("UseCompatLoadingForDrawables")
     public View getView(int position, View convertView, ViewGroup parent) {
         MonViewHolderCellule holder;

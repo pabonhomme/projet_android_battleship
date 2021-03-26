@@ -61,5 +61,6 @@
 
     <string name="voici_l_historique_de_toutes_vos_parties">Voici l\'historique de toutes vos parties</string>
     <string name="il_n_y_a_aucune_partie_enregistre">Il n\'y a aucune partie enregistrée. Jouez pour retrouvez tous vos scores !</string>
+    <string name="cellule_historique" formatted="false">%s a gagné face à %s en détruisant %d de ses bateaux contre %d</string>
 
 </resources>

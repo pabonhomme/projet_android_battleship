@@ -12,6 +12,10 @@ public class MonViewHolderCellule extends RecyclerView.ViewHolder {
 
     private final TextView leTextView;
 
+    /**
+     * constructeur
+     * @param itemView View
+     */
     public MonViewHolderCellule(@NonNull View itemView) {
         super(itemView);
         leTextView = itemView.findViewById(R.id.cellule);
