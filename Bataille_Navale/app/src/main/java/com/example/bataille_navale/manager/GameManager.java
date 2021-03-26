@@ -19,7 +19,6 @@ import java.util.UUID;
 public class GameManager {
 
     private static GameManager instanceUnique;
-    private final Sauveur stub = new Stub();
     private final Sauveur leSauveur = new SauveurSer();
     private Joueur j1;
     private Joueur j2;

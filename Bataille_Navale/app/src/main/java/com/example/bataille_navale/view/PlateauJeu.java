@@ -1,6 +1,8 @@
 package com.example.bataille_navale.view;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -121,17 +123,33 @@ public class PlateauJeu extends AppCompatActivity {
 
         quitter_jeu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Toast.makeText(PlateauJeu.this, R.string.declare_forfait,
-                        Toast.LENGTH_SHORT).show();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(PlateauJeu.this, Menu.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, 2000);
+                new AlertDialog.Builder(PlateauJeu.this)
+                        .setTitle(R.string.se_retirer_partie_jeu)
+                        .setMessage(R.string.question_abandonner__jeu)
+                        .setPositiveButton(R.string.retraite_jeu, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                                Toast.makeText(PlateauJeu.this, R.string.declare_forfait,
+                                        Toast.LENGTH_SHORT).show();
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(PlateauJeu.this, Menu.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }, 2000);
+                            }
+                        })
+                        .setNegativeButton(R.string.revenir_se_battre_jeu, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
     }

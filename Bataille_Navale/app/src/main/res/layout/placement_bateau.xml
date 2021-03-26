@@ -291,13 +291,25 @@
     </RadioGroup>
 
     <Button
+        android:id="@+id/reset_bateaux_placement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/replacer_les_bateaux_placement"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintTop_toBottomOf="@id/orientation_placement"
+        app:layout_constraintEnd_toEndOf="@id/text_orientation_placement"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/suivant_placement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/suivant_bouton"
-        app:layout_constraintTop_toBottomOf="@id/orientation_placement"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toEndOf="@id/reset_bateaux_placement"
+        app:layout_constraintTop_toTopOf="@id/reset_bateaux_placement" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

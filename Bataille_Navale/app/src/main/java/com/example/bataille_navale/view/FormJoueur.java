@@ -24,10 +24,7 @@ public class FormJoueur extends AppCompatActivity {
 
     private TextView inserez_pseudo_text = null;
     private EditText pseudo_joueur_form = null;
-    private Button bouton_suivant_form = null;
-    private Button bouton_retour_form = null;
 
-    private Button boutonPhoto = null;
     private ImageView imageJoueur = null;
 
     private static final int REQUEST_ID_IMAGE_CAPTURE = 100;
@@ -39,13 +36,20 @@ public class FormJoueur extends AppCompatActivity {
 
         inserez_pseudo_text = findViewById(R.id.inserez_pseudo_text);
         pseudo_joueur_form = findViewById(R.id.pseudo_joueur_form);
-        bouton_suivant_form = findViewById(R.id.bouton_suivant_form);
-        bouton_retour_form = findViewById(R.id.bouton_retour_form);
-        boutonPhoto = findViewById(R.id.button_image);
+        Button bouton_suivant_form = findViewById(R.id.bouton_suivant_form);
+        Button bouton_retour_form = findViewById(R.id.bouton_retour_form);
+        Button boutonPhoto = findViewById(R.id.button_image);
         imageJoueur = findViewById(R.id.imageJoueur);
 
+        imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.image_joueur_base));
+
         if(savedInstanceState!= null){
-            imageJoueur.setImageBitmap(savedInstanceState.getParcelable("imageJoueur"));
+            if(savedInstanceState.getParcelable("imageJoueur") != null){
+                imageJoueur.setImageBitmap(savedInstanceState.getParcelable("imageJoueur"));
+            }
+            else{
+                imageJoueur.setImageDrawable(getResources().getDrawable(R.drawable.image_joueur_base));
+            }
         }
 
         bouton_suivant_form.setOnClickListener(new View.OnClickListener() {
