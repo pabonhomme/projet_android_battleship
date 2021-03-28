@@ -18,7 +18,7 @@ public class Accueil extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
 
-    private final MusicManager musicS = MusicManager.getInstance();
+    private final MusicManager gMusique = MusicManager.getInstance();
 
 
     @Override
@@ -26,7 +26,7 @@ public class Accueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ecran_accueil);
 
-        musicS.putMusic(getApplicationContext(), R.raw.musique_menu);
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_menu);
 
         Button button = findViewById(R.id.accueil_commencer);
         button.setOnClickListener(new View.OnClickListener() {
@@ -44,19 +44,19 @@ public class Accueil extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        musicS.pauseMusic();
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        musicS.putMusic(getApplicationContext(), R.raw.musique_menu);
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_menu);
         super.onResume();
     }
 
     @Override
     protected void onDestroy() {
-        musicS.stopMusiq();
+        gMusique.stopMusiq();
         super.onDestroy();
     }
 }

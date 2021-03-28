@@ -21,6 +21,7 @@ public class Menu extends AppCompatActivity {
     Button button_menu_jouer = null;
     Button button_menu_historique = null;
     Button button_menu_retour = null;
+    Button parametres_menu = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,14 @@ public class Menu extends AppCompatActivity {
         button_menu_historique.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, HistoriqueParties.class);
+                startActivity(intent);
+            }
+        });
+
+        parametres_menu = findViewById(R.id.parametres_menu);
+        parametres_menu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, Parametres.class);
                 startActivity(intent);
             }
         });

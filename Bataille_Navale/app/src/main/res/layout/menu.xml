@@ -24,6 +24,15 @@
         app:backgroundTint="#0048FF" />
 
     <Button
+        android:id="@+id/parametres_menu"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:text="Paramètres"
+        app:backgroundTint="#0048FF" />
+
+    <Button
         android:id="@+id/menu_retour"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

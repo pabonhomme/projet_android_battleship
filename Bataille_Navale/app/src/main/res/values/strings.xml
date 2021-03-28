@@ -2,10 +2,13 @@
     <string name="app_name">Bataille Navale</string>
     <string name="accueil_msg">Bienvenue sur la meilleure application de bataille navale !</string>
     <string name="commencer">Commencer</string>
+
     <string name="jouer">Jouer</string>
     <string name="retour">Retour</string>
     <string name="rejouer">Rejouer</string>
     <string name="menu">Menu</string>
+    <string name="modifier_le_volume_du_jeu_paramtres">Modifier le volume du jeu</string>
+    <string name="parametres">Paramètres</string>
     <string name="historique_menu">Historique des parties</string>
 
     <string name="joueur1_rentrer_pseudo">Joueur 1 : veuillez rentrer votre pseudo</string>

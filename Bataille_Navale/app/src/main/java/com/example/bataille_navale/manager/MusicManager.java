@@ -6,12 +6,15 @@ import android.media.MediaPlayer;
 import androidx.annotation.RawRes;
 
 /**
- * Classe qui permet de gérer la musique de l'application
+ * Classe qui permet de gérer les musiques de l'application
  */
 public class MusicManager {
     private static MusicManager instanceUnique;
     private int musiqueActuelle;
     private MediaPlayer mp;
+    private float volume = 0.5f;
+
+
 
     /**
      * Constructeur
@@ -58,6 +61,7 @@ public class MusicManager {
         mp = MediaPlayer.create(context, id);
         mp.setLooping(true);
         mp.seekTo(0);
+        mp.setVolume(volume, volume);
         startMusic();
     }
 
@@ -87,5 +91,30 @@ public class MusicManager {
             mp.stop();
             musiqueActuelle = 0;
         }
+    }
+
+    /**
+     * Permet de changer le volume de la musique
+     * @param newVolume int
+     */
+    public void changerVolume(float newVolume){
+        setVolume(newVolume);
+        mp.setVolume(volume, volume);
+    }
+
+    /**
+     * renvoie la valeur du volume
+     * @return float
+     */
+    public float getVolume() {
+        return volume;
+    }
+
+    /**
+     * set le volume
+     * @param volume float
+     */
+    public void setVolume(float volume) {
+        this.volume = volume;
     }
 }
