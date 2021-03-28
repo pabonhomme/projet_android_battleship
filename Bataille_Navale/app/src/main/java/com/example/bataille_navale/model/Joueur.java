@@ -11,10 +11,29 @@ import java.io.Serializable;
  */
 public class Joueur implements Comparable<Joueur>, Serializable {
 
+    /**
+     * Pseudo d'un joueur
+     */
     private String pseudo;
+
+    /**
+     * Score d'un joueur
+     */
     private int score;
+
+    /**
+     * Image d'un joueur
+     */
     private transient Bitmap imageJoueur = null;
+
+    /**
+     * Plateau du joueur
+     */
     private transient Plateau plateau;
+
+    /**
+     * Plateau du joueur adverse
+     */
     private transient Plateau plateauAdverse;
 
 

@@ -7,17 +7,26 @@ import androidx.core.util.Pair;
  */
 public class Bateau {
 
+    /**
+     * Coordonées des bateaux
+     */
     private Pair<Integer, Integer> positions;
-    private Orientation direction; // false : horizontal; true : vertical
-    private int taille;
-    private int cellTouchees = 0;
 
     /**
-     * constructeur de Bateau
+     * Orientation des bateaux
+     * false : horizontal; true : vertical
      */
-    public Bateau(int taille) {
-        setTaille(taille);
-    }
+    private Orientation direction;
+
+    /**
+     * Taille du bateau
+     */
+    private int taille;
+
+    /**
+     * Nombre de cellule touchées du bateau
+     */
+    private int cellTouchees = 0;
 
     /**
      * Constructeur de Bateau

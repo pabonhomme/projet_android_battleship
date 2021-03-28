@@ -15,7 +15,6 @@ public class MusicManager {
     private float volume = 0.5f;
 
 
-
     /**
      * Constructeur
      */
@@ -37,8 +36,9 @@ public class MusicManager {
 
     /**
      * Permet de vérifier que la musique à mettre n'est pas celle déjà enregistrée en tant que musique actuelle
+     *
      * @param context Context contexte de l'application
-     * @param id int id de la musique à mettre
+     * @param id      int id de la musique à mettre
      */
     public void putMusic(Context context, @RawRes int id) {
         if (musiqueActuelle != id) {
@@ -50,8 +50,9 @@ public class MusicManager {
 
     /**
      * Permet de lancer une nouvelle musique
+     *
      * @param context Context contexte de l'application
-     * @param id int id de la musique à mettre
+     * @param id      int id de la musique à mettre
      */
     private void play(Context context, @RawRes int id) {
         if (mp != null) {
@@ -95,15 +96,17 @@ public class MusicManager {
 
     /**
      * Permet de changer le volume de la musique
+     *
      * @param newVolume int
      */
-    public void changerVolume(float newVolume){
+    public void changerVolume(float newVolume) {
         setVolume(newVolume);
         mp.setVolume(volume, volume);
     }
 
     /**
      * renvoie la valeur du volume
+     *
      * @return float
      */
     public float getVolume() {
@@ -112,6 +115,7 @@ public class MusicManager {
 
     /**
      * set le volume
+     *
      * @param volume float
      */
     public void setVolume(float volume) {

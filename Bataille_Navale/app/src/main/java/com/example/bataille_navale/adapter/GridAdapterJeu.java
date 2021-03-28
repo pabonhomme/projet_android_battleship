@@ -15,7 +15,14 @@ import java.util.ArrayList;
 
 public class GridAdapterJeu extends BaseAdapter {
 
+    /**
+     * liste de cellules
+     */
     private ArrayList<Cellule> listeCell;
+
+    /**
+     * Permet d'instancier un fichier XML associé à sa vue correspondante
+     */
     private final LayoutInflater layoutInflater;
 
     /**

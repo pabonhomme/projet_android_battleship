@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Classe qui permet de définir le gamemanger
+ * Classe qui permet de gérer l'application
  */
 public class GameManager {
 
@@ -27,6 +27,9 @@ public class GameManager {
     private Partie partieEnCours;
     private List<Partie> historique = new ArrayList<>();
 
+    /**
+     * Nom du fichier dans lequel on sauvegarde l'historique
+     */
     public static final String NAME_FILE = "historique_parties";
 
     /**
@@ -144,6 +147,10 @@ public class GameManager {
         return false;
     }
 
+    /**
+     * Supprime une partie de l'historique
+     * @param id UUID
+     */
     public void suppressionPartieHistorique(UUID id) {
         Partie partieASupp = null;
         for (Partie partie:historique) {

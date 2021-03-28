@@ -8,8 +8,19 @@ import java.util.UUID;
  */
 public class Partie implements Serializable {
 
+    /**
+     * Id unique d'une partie
+     */
     private UUID id = UUID.randomUUID();
+
+    /**
+     * Joueur gagnant de la partie
+     */
     private Joueur jGagnant;
+
+    /**
+     * Joueur perdant de la partie
+     */
     private Joueur jPerdant;
 
     /**

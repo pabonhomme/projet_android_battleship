@@ -13,11 +13,31 @@ import static com.example.bataille_navale.model.Orientation.HORIZONTAL;
 public class Plateau {
 
     /*--- définition des attributs du plateau ---*/
+    /**
+     * Taille constance d'un plateau
+     */
     public static final int TAILLE_PLATEAU = 10;
-    public static final int[] TAILLE_NAVIRES = {5, 4, 3, 3, 2}; //on a 5 bateaux
+
+    /**
+     * Taille des navires
+     * Il y a 5 bateaux
+     */
+    public static final int[] TAILLE_NAVIRES = {5, 4, 3, 3, 2};
+
+    /**
+     * Nombre de bateaux
+     */
     public static final int NB_BATEAUX = TAILLE_NAVIRES.length;
+
+    /**
+     * Liste de tous les navires remplie au fur et à mesure du positionnement
+     */
     private ArrayList<Bateau> navires = new ArrayList<>();
-    private ArrayList<Cellule> grille = new ArrayList<>();
+
+    /**
+     * Liste de toutes les cellules du plateau
+     */
+    private final ArrayList<Cellule> grille = new ArrayList<>();
 
     /**
      * constructeur de Plateau

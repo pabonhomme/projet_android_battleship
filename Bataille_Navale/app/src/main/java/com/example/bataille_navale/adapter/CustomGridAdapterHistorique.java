@@ -16,7 +16,14 @@ import java.util.UUID;
 
 public class CustomGridAdapterHistorique extends RecyclerView.Adapter<MonViewHolderHistorique> {
 
+    /**
+     * liste de Parties
+     */
     private final List<Partie> historique;
+
+    /**
+     * Permet de supprimer une liste
+     */
     private final GridAdapterCallback callback;
 
     /**

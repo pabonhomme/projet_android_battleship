@@ -16,10 +16,15 @@ import java.util.ArrayList;
 
 public class GridAdapterPlacement extends BaseAdapter {
 
+    /**
+     * liste de cellules
+     */
     private ArrayList<Cellule> listeCell;
-    private LayoutInflater layoutInflater;
-    private Context context;
-    AlphaAnimation animation = null;
+
+    /**
+     * Permet d'instancier un fichier XML associé à sa vue correspondante
+     */
+    private final LayoutInflater layoutInflater;
 
     /**
      * Constructeur
@@ -28,7 +33,6 @@ public class GridAdapterPlacement extends BaseAdapter {
      * @param listeCell ArrayList<Cellule>
      */
     public GridAdapterPlacement(Context aContext, ArrayList<Cellule> listeCell) {
-        this.context = aContext;
         this.listeCell = listeCell;
         layoutInflater = LayoutInflater.from(aContext);
     }

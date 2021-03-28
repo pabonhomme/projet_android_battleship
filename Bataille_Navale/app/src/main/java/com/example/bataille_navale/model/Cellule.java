@@ -8,8 +8,19 @@ import androidx.core.util.Pair;
  */
 public class Cellule {
 
+    /**
+     * Coordonnées de la cellule
+     */
     private Pair<Integer, Integer> positions;
+
+    /**
+     * Navire contenu dans la cellule
+     */
     private Bateau navire;
+
+    /**
+     * Boolean donnant l'état d'une cellule
+     */
     private boolean estVisitee;
 
     /**
