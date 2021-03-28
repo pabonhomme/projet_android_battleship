@@ -147,8 +147,10 @@ public class GameManager {
     public void suppressionPartieHistorique(UUID id) {
         Partie partieASupp = null;
         for (Partie partie:historique) {
-            if(partie.getId() == id)
+            if(partie.getId() == id){
                 partieASupp = partie;
+                break;
+            }
         }
         historique.remove(partieASupp);
     }

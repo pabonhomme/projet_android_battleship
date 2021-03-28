@@ -47,8 +47,7 @@ public class PlacementBateau extends AppCompatActivity {
 
 
         nomJoueur_placement.setText(getResources().getString(R.string.pseudo_placement, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
-        bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, Plateau.NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
-        taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, Plateau.TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
+        setInfosBateaux();
 
         final GridView gridView = findViewById(R.id.gridView_placement); // on récupère la grid
         final GridAdapterPlacement gridAdapterPlacement = new GridAdapterPlacement(this, gmanager.getJoueurEnCours().getPlateau().getGrille()); // on set l'adapter
@@ -90,8 +89,7 @@ public class PlacementBateau extends AppCompatActivity {
                     gmanager.getJoueurEnCours().getPlateau().resetBateaux();
                     gridAdapterPlacement.notifyDataSetChanged();
                     bateauPlace = 0;
-                    bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, Plateau.NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
-                    taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, Plateau.TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
+                    setInfosBateaux();
                 }
             }
         });
@@ -103,8 +101,7 @@ public class PlacementBateau extends AppCompatActivity {
                     if (gmanager.getJoueurEnCours() == gmanager.getJ2()) {
                         bateauPlace = 0;
                         nomJoueur_placement.setText(getResources().getString(R.string.pseudo_placement, gmanager.getJoueurEnCours().getPseudo())); // set texte nb bateaux restants
-                        bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, Plateau.NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
-                        taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, Plateau.TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
+                        setInfosBateaux();
                         taille_bat_placement.setVisibility(View.VISIBLE);
                         gridAdapterPlacement.refreshData(gmanager.getJoueurEnCours().getPlateau().getGrille());
                     } else {
@@ -118,6 +115,14 @@ public class PlacementBateau extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     * Permet de mettre à jour les textView d'informations des bateaux
+     */
+    private void setInfosBateaux(){
+        bat_restant_placement.setText(getResources().getString(R.string.bat_restant_placement, Plateau.NB_BATEAUX - bateauPlace)); // set texte nb bateaux restants
+        taille_bat_placement.setText(getResources().getString(R.string.taille_bat_placement, Plateau.TAILLE_NAVIRES[bateauPlace])); // set texte taille bateau à placer
     }
 
     @Override

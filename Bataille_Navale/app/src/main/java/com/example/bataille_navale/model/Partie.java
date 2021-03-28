@@ -40,7 +40,7 @@ public class Partie implements Serializable {
         }
         for (Bateau bat : jPerdant.getPlateauAdverse().getNavires()) {
             if (bat.estCoule()) {
-                jGagnant.incrementerScore();
+                jPerdant.incrementerScore();
             }
         }
     }

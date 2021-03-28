@@ -56,7 +56,6 @@ public class PlateauJeu extends AppCompatActivity {
 
                 Cellule cell = (Cellule) gridAdapter.getItem(position);
 
-
                 if (!gmanager.getaJoue() || gmanager.getaTouche()) {
                     if (!cell.estVisitee()) {
                         cell.visite();
@@ -74,26 +73,7 @@ public class PlateauJeu extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
 
-                if (gmanager.isPartieFinie()) {
-                    try {
-                        gmanager.sauvegarderDonnees(openFileOutput(GameManager.NAME_FILE, MODE_PRIVATE));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    suivant_jeu.setVisibility(View.GONE);
-                    quitter_jeu.setVisibility(View.GONE);
-                    Toast.makeText(PlateauJeu.this, R.string.bj_partie_terminee,
-                            Toast.LENGTH_SHORT).show();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent intent = new Intent(PlateauJeu.this, AffichageFinPartie.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }, 2000);
-                }
+                conditionDeFin();
             }
         });
 
@@ -148,6 +128,32 @@ public class PlateauJeu extends AppCompatActivity {
                         .show();
             }
         });
+    }
+
+    /**
+     * Vérifie les conditions de fin de jeu
+     */
+    private void conditionDeFin(){
+        if (gmanager.isPartieFinie()) {
+            try {
+                gmanager.sauvegarderDonnees(openFileOutput(GameManager.NAME_FILE, MODE_PRIVATE));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            suivant_jeu.setVisibility(View.GONE);
+            quitter_jeu.setVisibility(View.GONE);
+            Toast.makeText(PlateauJeu.this, R.string.bj_partie_terminee,
+                    Toast.LENGTH_SHORT).show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(PlateauJeu.this, AffichageFinPartie.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 2000);
+        }
     }
 
     @Override
