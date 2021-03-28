@@ -19,6 +19,8 @@
     <string name="erreur_pseudo_non_rentre">Vous n\'avez pas rentré votre pseudo</string>
     <string name="action_supprimee">Action supprimée</string>
     <string name="action_ratee">Action ratée</string>
+    <string name="permission_accepter">Persmission acceptée</string>
+    <string name="permission_refusee">Permission refusée</string>
 
     <string name="_0">0</string>
     <string name="_1">1</string>

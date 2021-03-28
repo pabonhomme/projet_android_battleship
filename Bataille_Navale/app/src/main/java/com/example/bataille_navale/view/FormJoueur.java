@@ -1,7 +1,9 @@
 package com.example.bataille_navale.view;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.manager.GameManager;
@@ -84,7 +88,7 @@ public class FormJoueur extends AppCompatActivity {
         boutonPhoto.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                captureImage();
+                verifierPermission();
             }
         });
 
@@ -97,6 +101,39 @@ public class FormJoueur extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * Permet de vérifier l'accés à la caméra
+     */
+    private void verifierPermission(){
+        String permission = Manifest.permission.CAMERA;
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(), permission) == PackageManager.PERMISSION_GRANTED){
+            captureImage();
+        }
+        else{
+            ActivityCompat.requestPermissions(this, new String[]{permission}, REQUEST_ID_IMAGE_CAPTURE);
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Toast.makeText(this, R.string.permission_accepter, Toast.LENGTH_LONG).show();
+
+                captureImage();
+
+            }
+            // Refusé ou supprimé
+            else {
+                Toast.makeText(this, R.string.permission_refusee, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
