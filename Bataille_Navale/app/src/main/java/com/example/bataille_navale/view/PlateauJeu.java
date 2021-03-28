@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterJeu;
+import com.example.bataille_navale.manager.MusicManager;
 import com.example.bataille_navale.model.Cellule;
 import com.example.bataille_navale.manager.GameManager;
 import com.example.bataille_navale.model.Plateau;
@@ -26,7 +27,8 @@ import java.io.FileNotFoundException;
 
 public class PlateauJeu extends AppCompatActivity {
 
-    GameManager gmanager = GameManager.getInstance();
+    private final GameManager gmanager = GameManager.getInstance();
+    private final MusicManager gMusique = MusicManager.getInstance();
 
     private TextView nomJoueur_jeu = null;
     private TextView bat_restant_jeu = null;
@@ -37,6 +39,8 @@ public class PlateauJeu extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plateau_jeu);
+
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_jeu);
 
         nomJoueur_jeu = findViewById(R.id.nomJoueur_jeu);
         bat_restant_jeu = findViewById(R.id.bat_restant_jeu);
@@ -158,11 +162,13 @@ public class PlateauJeu extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_jeu);
         super.onResume();
     }
 }

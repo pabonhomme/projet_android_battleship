@@ -18,10 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.manager.GameManager;
+import com.example.bataille_navale.manager.MusicManager;
 
 public class FormJoueur extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
+
+    private final MusicManager gMusique = MusicManager.getInstance();
 
     private TextView inserez_pseudo_text = null;
     private EditText pseudo_joueur_form = null;
@@ -35,6 +38,8 @@ public class FormJoueur extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_infos_joueur);
+
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_jeu);
 
         inserez_pseudo_text = findViewById(R.id.inserez_pseudo_text);
         pseudo_joueur_form = findViewById(R.id.pseudo_joueur_form);
@@ -141,11 +146,13 @@ public class FormJoueur extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_jeu);
         super.onResume();
     }
 }

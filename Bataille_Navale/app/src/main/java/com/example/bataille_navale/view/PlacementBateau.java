@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterPlacement;
+import com.example.bataille_navale.manager.MusicManager;
 import com.example.bataille_navale.model.Bateau;
 import com.example.bataille_navale.model.Cellule;
 import com.example.bataille_navale.manager.GameManager;
@@ -24,6 +25,8 @@ import com.example.bataille_navale.model.Plateau;
 public class PlacementBateau extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
+
+    private final MusicManager gMusique = MusicManager.getInstance();
 
     private TextView bat_restant_placement = null;
     private TextView taille_bat_placement = null;
@@ -37,6 +40,8 @@ public class PlacementBateau extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.placement_bateau);
+
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_jeu);
 
         TextView nomJoueur_placement = findViewById(R.id.nomJoueur_placement);
         bat_restant_placement = findViewById(R.id.bat_restant_placement);
@@ -127,11 +132,13 @@ public class PlacementBateau extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_jeu);
         super.onResume();
     }
 }

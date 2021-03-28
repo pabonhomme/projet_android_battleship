@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.CustomGridAdapterHistorique;
 import com.example.bataille_navale.manager.GameManager;
+import com.example.bataille_navale.manager.MusicManager;
 
 import java.io.FileNotFoundException;
 import java.util.UUID;
@@ -19,6 +20,8 @@ import java.util.UUID;
 public class HistoriqueParties extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
+    private final MusicManager gMusique = MusicManager.getInstance();
+
     TextView jamais_joue_historique = null;
     CustomGridAdapterHistorique adapter;
 
@@ -26,6 +29,8 @@ public class HistoriqueParties extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.historique_parties);
+
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_menu);
 
         jamais_joue_historique = findViewById(R.id.jamais_joue_historique);
         if (gmanager.getHistorique().size() != 0) {
@@ -54,11 +59,13 @@ public class HistoriqueParties extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_menu);
         super.onResume();
     }
 

@@ -14,15 +14,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.adapter.GridAdapterPlacement;
 import com.example.bataille_navale.manager.GameManager;
+import com.example.bataille_navale.manager.MusicManager;
 
 public class AffichageFinPartie extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
+    private final MusicManager gMusique = MusicManager.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.affichage_fin_partie);
+
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_fin_partie);
 
         TextView nomJoueur_gagnant_finPartie = findViewById(R.id.nomJoueur_gagnant_finPartie);
         TextView pseudo_plateau_adverse_finPartie = findViewById(R.id.pseudo_plateau_adverse_finPartie);
@@ -62,11 +66,13 @@ public class AffichageFinPartie extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_fin_partie);
         super.onResume();
     }
 }

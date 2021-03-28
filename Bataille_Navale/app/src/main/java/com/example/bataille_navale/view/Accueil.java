@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.manager.GameManager;
+import com.example.bataille_navale.manager.MusicManager;
 
 import java.io.FileNotFoundException;
 
@@ -17,11 +18,15 @@ public class Accueil extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
 
+    private final MusicManager musicS = MusicManager.getInstance();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ecran_accueil);
+
+        musicS.putMusic(getApplicationContext(), R.raw.musique_menu);
 
         Button button = findViewById(R.id.accueil_commencer);
         button.setOnClickListener(new View.OnClickListener() {
@@ -39,11 +44,19 @@ public class Accueil extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        musicS.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        musicS.putMusic(getApplicationContext(), R.raw.musique_menu);
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        musicS.stopMusiq();
+        super.onDestroy();
     }
 }

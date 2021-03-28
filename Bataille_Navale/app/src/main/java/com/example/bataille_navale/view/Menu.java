@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bataille_navale.R;
 import com.example.bataille_navale.manager.GameManager;
+import com.example.bataille_navale.manager.MusicManager;
 
 public class Menu extends AppCompatActivity {
 
     private final GameManager gmanager = GameManager.getInstance();
+
+    private final MusicManager gMusique = MusicManager.getInstance();
 
     Button button_menu_jouer = null;
     Button button_menu_historique = null;
@@ -23,6 +26,9 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_menu);
+
 
         button_menu_jouer = findViewById(R.id.menu_jouer);
         button_menu_jouer.setOnClickListener(new View.OnClickListener() {
@@ -54,11 +60,13 @@ public class Menu extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        gMusique.pauseMusic();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        gMusique.putMusic(getApplicationContext(), R.raw.musique_menu);
         super.onResume();
     }
 }
